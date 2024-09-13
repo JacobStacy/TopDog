@@ -1,0 +1,29 @@
+.home_header {
+    height: 3rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3rem;
+    font-weight: 600;
+
+    color: #fff;
+
+}
+
+.home_footer{
+    // border-top: solid .5px #fff;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3rem;
+    font-weight: 600;
+
+    color: #fff;
+    background-color: #ffffff68;
+}

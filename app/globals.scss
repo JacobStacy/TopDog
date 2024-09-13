@@ -1,0 +1,113 @@
+// Off white
+// $main-text-color: #2e2e2e;
+// $main-background-color: #F2F1EF;
+
+// White
+$main-text-color: #000000;
+$main-background-color: #ffffff;
+
+// Greyish
+// $main-text-color: #353535;
+// $main-background-color: #E6E6E6;
+
+
+
+/* makes sizing simpler */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* dark mode user-agent-styles */
+
+html {
+  color-scheme: light;
+  /* color-scheme: dark light; */
+
+  color: $main-text-color;
+  background-color: $main-background-color;
+
+  scroll-behavior: smooth;
+
+  overflow-x: hidden;
+
+  overscroll-behavior-y: none;
+
+}
+
+
+.not_supported {
+  visibility: collapse;
+}
+
+/* min body height */
+
+body {
+  min-height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+
+  overflow-x: hidden;
+
+  background: #7F7FD5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  $footer-size: 4rem;
+  padding-bottom: $footer-size;
+  footer {
+    position: fixed;
+    bottom: 0;
+    height: $footer-size;
+  }
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+
+.not_supported {
+  visibility: collapse;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  &:visited{
+    color: #000000;
+  }
+} 
+
+@media only screen and (max-width: 320px) {
+
+  .supported {
+    display: none;
+  }
+
+  .not_supported {
+    visibility: visible;
+
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+
+    font-size: 2rem;
+    font-weight: 900;
+  }
+}
