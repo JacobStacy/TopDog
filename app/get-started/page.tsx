@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./page.module.scss";
 import { montserrat } from '@/app/ui/fonts';
 import { SignInForm } from "../ui/sign-in-form";

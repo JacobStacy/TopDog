@@ -2,10 +2,13 @@
 
 import {signIn, signOut} from "@/auth"
 
-export async function socialLogin(formData: { get: (arg0: string) => any }) {
-    const action = formData.get("action");
-    await signIn(action, {redirectTo: "/home"});
-    // console.log(action)
+export async function socialLogin(formData: FormData) {
+    const action = formData.get("action")?.toString() ?? "";
+    if (action) {
+        await signIn(action, {redirectTo: "/home"});
+    } else {
+        throw new Error("Invalid action");
+    }
 }
 
 export async function logout() {

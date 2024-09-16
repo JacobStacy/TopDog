@@ -6,7 +6,7 @@ import CrossIcon from "@/public/cross-icon.svg";
 import StarIcon from "@/public/star-icon.svg";
 import { IActionBtnsProps } from "@/types";
 
-const IActionButtons = forwardRef(({ triggerSwipeLeft, triggerSwipeRight }: IActionBtnsProps, ref) => {
+const IActionButtons = forwardRef(({ triggerSwipeLeft, triggerSwipeRight }: IActionBtnsProps) => {
     const handleSwipe = (action: 'left' | 'right') => {
         if (action === 'left') {
             triggerSwipeLeft();

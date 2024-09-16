@@ -15,8 +15,8 @@ interface PhotoCardHandle {
 
 export default function Home() {
     const [cards, setCards] = useState<PhotoCardData[]>(photoCardData);
-    const [rightSwipe, setRightSwipe] = useState(0);
-    const [leftSwipe, setLeftSwipe] = useState(0);
+    // const [rightSwipe, setRightSwipe] = useState(0);
+    // const [leftSwipe, setLeftSwipe] = useState(0);
 
     const cardRef = useRef<PhotoCardHandle[]>([]);
     const activeIndex = cards.length - 1;
@@ -24,9 +24,11 @@ export default function Home() {
     const removeCard = (id: number, action: 'right' | 'left') => {
         setCards(prev => prev.filter(card => card.id !== id));
         if (action === 'right') {
-            setRightSwipe(prev => prev + 1);
+            // setRightSwipe(prev => prev + 1);
+            console.log("right action");
         } else {
-            setLeftSwipe(prev => prev + 1);
+            // setLeftSwipe(prev => prev + 1);
+            console.log("left action");
         }
     };
 

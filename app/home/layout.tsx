@@ -1,7 +1,5 @@
 import styles from "./layout.module.scss";
 import { montserrat } from '@/app/ui/fonts';
-import Logout from "@/app/ui/logout-form";
-import Image from "next/image";
 import DogIcon from "@/public/dog-icon.svg";
 import RankIcon from "@/public/rank-icon.svg"
 import UserIcon from "@/public/user-icon.svg"
