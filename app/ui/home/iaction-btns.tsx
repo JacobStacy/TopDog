@@ -44,4 +44,7 @@ const IActionButtons = forwardRef(({ triggerSwipeLeft, triggerSwipeRight }: IAct
     );
 });
 
+// Set the display name to avoid the ESLint warning
+IActionButtons.displayName = 'IActionButtons';
+
 export default IActionButtons;

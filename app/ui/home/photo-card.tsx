@@ -100,4 +100,7 @@ const PhotoCard = forwardRef<PhotoCardHandle, PhotoCardProps>(({ active, data, r
     );
 });
 
+// Set the display name to avoid the ESLint warning
+PhotoCard.displayName = 'PhotoCard';
+
 export default PhotoCard;
