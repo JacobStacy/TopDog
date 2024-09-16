@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 type TracksData = {
   name: string;
@@ -10,21 +10,24 @@ type TracksData = {
 export type PhotoCardData = {
   id: number;
   name: string;
-  src: StaticImageData;
   age: number;
-  bio: string;
-  genre: string[];
-  tracks: TracksData[];
+  desc: string;
+  photos: string[];
 };
 
 export type PhotoCardProps = {
   data: PhotoCardData;
   active: boolean;
   removeCard: (id: number, action: 'right' | 'left') => void;
+  // getExit: (setState: Dispatch<SetStateAction<number>>) => void;
+  // exitX: number;
+  // setExitX: (newExit: number) => void;
 };
 
-export type SwipeButtonProps = {
-  exit: (value: SetStateAction<number>) => void;
+export type IActionBtnsProps = {
+  triggerSwipeLeft: () => void;
+  triggerSwipeRight: () => void;
   removeCard: (id: number, action: 'right' | 'left') => void;
-  id: number;
+  
+  // id: number;
 };

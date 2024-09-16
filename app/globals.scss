@@ -47,24 +47,28 @@ html {
 
 
 .not_supported {
-  visibility: collapse;
+  display: none;
 }
 
 /* min body height */
 
 body {
+  display: flex;
+  flex-direction: column;
+
   min-height: 100%;
   min-height: 100vh;
   min-height: 100dvh;
 
 
-  overflow-x: hidden;
+  overflow: hidden;
 
   background: #7F7FD5;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  $footer-size: 4rem;
+  $footer-size: 10vh;
+  $footer-size: 10dvh;
   padding-bottom: $footer-size;
   footer {
     position: fixed;
@@ -83,9 +87,6 @@ video {
 }
 
 
-.not_supported {
-  visibility: collapse;
-}
 
 a {
   text-decoration: none;
@@ -102,7 +103,7 @@ a {
   }
 
   .not_supported {
-    visibility: visible;
+    display: block;
 
     writing-mode: vertical-rl;
     text-orientation: mixed;

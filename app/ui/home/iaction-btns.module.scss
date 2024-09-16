@@ -1,0 +1,71 @@
+.iaction_btns {
+    width: 100%;
+
+    // margin-top: 2vh;
+
+    flex-grow: 1;
+    // height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+        width: 100%;
+        li button {
+            background: rgba( 255, 255, 255, 0.25 );
+            // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            border: 1px solid #ffffff2e;
+    
+            border-radius: 50%;
+    
+            svg {
+                height: 10vh;
+                height: 10dvh;
+
+                width: 10vh;
+                width: 10dvh;
+            }
+    
+            .cross {
+                path {
+                    fill: #eb7b7b;
+                }
+            }
+            .star {
+                width: 7vh;
+                width: 7dvh;
+
+                height: 7vh;
+                height: 7dvh;
+                
+                padding: 1vh;
+                padding: 1dvh;
+                path {
+                    stroke: #306eff;;
+                    fill: none;
+                    stroke-width: 1.5px;
+                }
+            }
+            .check {
+                path {
+                    stroke: #27ff73;
+                    stroke-width: 1.4px;
+                }
+            }
+        }
+    }
+    
+        
+
+    
+}
