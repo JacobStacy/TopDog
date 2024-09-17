@@ -1,6 +1,6 @@
 import styles from "./page.module.scss";
 import { montserrat } from '@/app/ui/fonts';
-import { SignInForm } from "../ui/sign-in-form";
+import { SignInForm } from "../ui/get-started/sign-in-form";
 
 
 export default function GetStarted() {
