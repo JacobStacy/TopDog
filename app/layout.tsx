@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.scss";
 
-// import { dbConnect } from "@/utils/mongo";
+import { dbConnect } from "@/utils/mongo";
 
 
 export const metadata: Metadata = {
