@@ -17,7 +17,7 @@ export function SignInForm() {
                     name="action" 
                     value="google"
                     >
-                        Sign in With Google
+                        Sign in with Google
                         <Image
                             src="/google-social-icon.png"
                             alt="Google Icon"
@@ -32,7 +32,7 @@ export function SignInForm() {
                     name="action" 
                     value="github"
                     >
-                        Sign In With GitHub
+                        Sign in with GitHub
                         <Image
                             src="/github-social-icon.png"
                             alt="Github Icon"
@@ -47,7 +47,7 @@ export function SignInForm() {
                     className={styles.sign_in_button} 
                     name="email"
                 >
-                    Sign In With Email
+                    Sign in with Email
                     <Image
                         src="/email-icon.png"
                         alt="Email Icon"

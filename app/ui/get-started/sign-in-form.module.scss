@@ -19,8 +19,13 @@
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
 
+    max-width: 400px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
+    &:hover {
+        cursor: pointer;
+    }
 }

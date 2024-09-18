@@ -1,13 +1,15 @@
+"use server"
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
-import CredentialsProvider from "next-auth/providers/credentials"
-import { signInSchema } from "./lib/zod"
+import CredentialsProvider from "next-auth/providers/credentials";
+import { signInSchema } from "@/utils/zod";
 
-import { getUserByEmail, User } from "@/utils/users";
+import { User, UserType } from "@/model/user-model";
+import bcrypt from "bcryptjs";
 
 export const {
-    handlers: {GET, POST },
+    // handlers: {GET, POST},
     auth,
     signIn,
     signOut
@@ -21,18 +23,22 @@ export const {
                 email: {},
                 password: {},
             },
-            async authorize(credentials) : Promise<User | null> {
+            async authorize(credentials) : Promise<UserType | null> {
+                console.log("credentials", credentials);
                 if (credentials === null) return null;
 
                 try {
-
-
                     const { email, password } = await signInSchema.parseAsync(credentials)
 
-                    const user = getUserByEmail(email);
+                    const user = await User.findOne({
+                        email: email,
+                    });
 
                     if (user) {
-                        const isMatch = user?.password === credentials?.password;
+                        const isMatch = await bcrypt.compare(
+                            password,
+                            user?.password
+                        );
                         
                         if (isMatch) {
                             return user;
@@ -41,7 +47,7 @@ export const {
                         }
 
                     } else {
-                        throw new Error("User not found")
+                        throw new Error("Username or Password is incorrect")
                     }
                 } catch (error){   
                     if (error instanceof Error) {

@@ -1,6 +1,6 @@
 
 
-.cred_login {
+.register {
     font-size: 1rem;
 
 
@@ -44,6 +44,8 @@
 
                 color: #fff;
 
+                
+
                 &:focus {
                     outline: none;
                 }
@@ -67,5 +69,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

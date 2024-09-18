@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.scss";
 
+import { dbConnect } from "@/utils/mongo";
 
 
 export const metadata: Metadata = {
@@ -9,11 +10,15 @@ export const metadata: Metadata = {
   description: "Who's the top dog?",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const conn = await dbConnect();
+  console.log(conn);
+
   return (
     <html lang="en">
         <body>
