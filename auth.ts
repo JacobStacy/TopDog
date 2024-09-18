@@ -8,7 +8,7 @@ import { User, UserType } from "@/model/user-model";
 import bcrypt from "bcryptjs";
 
 export const {
-    // handlers: {GET, POST},
+    handlers: {GET, POST},
     auth,
     signIn,
     signOut
