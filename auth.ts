@@ -7,17 +7,12 @@ import { signInSchema } from "@/utils/zod";
 import { User, UserType } from "@/model/user-model";
 import bcrypt from "bcryptjs";
 
-
-import { MongoDBAdapter } from "@auth/mongodb-adapter"
-import client from "@/lib/db"
-
 export const {
     auth,
     handlers,
     signIn,
     signOut
 } = NextAuth({
-    adapter: MongoDBAdapter(client),
     session: {
         strategy: "jwt",
     },
