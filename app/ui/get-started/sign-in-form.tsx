@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 
-export function SignInForm() {
+export default function SignInForm() {
     
     return (
         <>
