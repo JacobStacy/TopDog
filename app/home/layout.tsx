@@ -4,6 +4,7 @@ import DogIcon from "@/public/dog-icon.svg";
 import RankIcon from "@/public/rank-icon.svg"
 import UserIcon from "@/public/user-icon.svg"
 import { logout } from "@/app/actions";
+import Link from "next/link";
 
 
 export default function HomeLayout( {
@@ -26,21 +27,25 @@ export default function HomeLayout( {
                 <nav>
                     <ul>
                         <li>
-                            <button aria-label="Home">
-                                <DogIcon className={styles.dog}/>
-                            </button>
-                        </li>
-                        <li>
-                            <button aria-label="Leaderboard">
-                                <RankIcon className={styles.rank}/>
-                            </button>
+                            <Link href="/home">
+                                <button aria-label="Home">
+                                    <DogIcon className={styles.dog}/>
+                                </button>
+                            </Link>
                         </li>
                         <li>
                             <form action={logout}>
+                                <button aria-label="Leaderboard">
+                                    <RankIcon className={styles.rank}/>
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                            <Link href="/home/profile">
                                 <button aria-label="Your Profile" type="submit">
                                     <UserIcon className={styles.user}/>
                                 </button>
-                            </form>
+                            </Link>
                         </li>
                     </ul>
                 </nav>

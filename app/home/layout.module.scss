@@ -35,7 +35,10 @@
     font-weight: 600;
 
     color: #fff;
-    background-color: #ffffff68;
+
+    background: #ffffff40;
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
 
     width: 100%;
 
