@@ -1,6 +1,6 @@
 "use client"
 import s from "./add-dog-form.module.scss"
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent } from "react"
 import { montserrat } from '@/app/ui/fonts';
 
 // Define the type for image objects in the array
