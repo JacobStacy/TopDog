@@ -1,30 +1,17 @@
 "use client"
 import s from "./add-dog-form.module.scss"
-import { ChangeEvent } from "react"
 import { montserrat } from '@/app/ui/fonts';
 
 // Define the type for image objects in the array
-interface UploadedImage {
-    file: File;
-    preview: string;
-}
+// interface UploadedImage {
+//     file: File;
+//     preview: string;
+// }
 
 export default function AddDogForm(){
     // const [error, setError] = useState("")
     // const [selectedImages, setSelectedImages] = useState<UploadedImage[]>([]);
 
-    const handleImageAdded = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files) {
-            const files = Array.from(event.target.files); // Convert FileList to an array
-            const newImages = files.map((file) => ({
-              file,
-              preview: URL.createObjectURL(file), // Create a preview URL for each image
-            }));
-      
-            // Update the state with the new images, preserving existing ones
-            // setSelectedImages((prevImages) => [...prevImages, ...newImages]);
-          }
-    }
 
     const handleFormSubmit = () => {
         
