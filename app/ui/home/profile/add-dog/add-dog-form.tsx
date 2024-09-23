@@ -1,5 +1,4 @@
 "use client"
-import  Image  from "next/image";
 import s from "./add-dog-form.module.scss"
 import { ChangeEvent, useState } from "react"
 import { montserrat } from '@/app/ui/fonts';
@@ -11,8 +10,8 @@ interface UploadedImage {
 }
 
 export default function AddDogForm(){
-    const [error, setError] = useState("")
-    const [selectedImages, setSelectedImages] = useState<UploadedImage[]>([]);
+    // const [error, setError] = useState("")
+    // const [selectedImages, setSelectedImages] = useState<UploadedImage[]>([]);
 
     const handleImageAdded = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
@@ -23,7 +22,7 @@ export default function AddDogForm(){
             }));
       
             // Update the state with the new images, preserving existing ones
-            setSelectedImages((prevImages) => [...prevImages, ...newImages]);
+            // setSelectedImages((prevImages) => [...prevImages, ...newImages]);
           }
     }
 
@@ -34,7 +33,7 @@ export default function AddDogForm(){
     return (
         <div className={`${s.add_dog} ${montserrat.className}`}>
             <div className={s.error_msg}>
-                {error}
+                {/* {error} */}
             </div>
             <form onSubmit={handleFormSubmit}>
                 <div className={s.fields}>

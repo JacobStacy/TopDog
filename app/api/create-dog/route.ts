@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/lib/mongo";
 import { createDog } from "@/queries/dogs";
 import { auth } from "@/auth"
-import { User, UserType } from "@/model/user-model";
+import { User} from "@/model/user-model";
 
 export const POST = async(request : NextRequest) => {
     const {
