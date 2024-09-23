@@ -1,7 +1,7 @@
 "use server"
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { dbConnect } from "@/utils/mongo";
+import { dbConnect } from "@/lib/mongo";
 import { createUser } from "@/queries/users";
 
 export const POST = async(request : NextRequest) => {
@@ -31,3 +31,4 @@ export const POST = async(request : NextRequest) => {
         {status: 201},
     );
 }
+

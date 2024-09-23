@@ -1,0 +1,76 @@
+.add_dog {
+
+    margin: 2.5vh 0;
+
+    background: #ffffff40;
+    // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid #ffffff2e;
+
+    color: #fff;
+
+    padding: 2.5vh;
+
+
+    .fields {
+        div {
+            display: flex;
+            justify-content: space-between;
+
+            label {
+                text-align: left;
+                font-weight: 500;
+                font-size: 1.5rem;
+            }
+        
+            input {
+                background-color: #00000000;
+        
+                border: solid 1px #fff;
+                border-radius: 100vw;
+                border-radius: 100dvw;
+        
+                margin-bottom: 3vh;
+                padding: .5rem 1rem;
+        
+                font-size: 1rem;
+        
+                color: #fff;
+
+                flex-grow: 1;
+
+                margin-left: 6%;
+        
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+    button {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 400;
+
+
+        margin: auto;
+        background-color: transparent;
+        border: #fff solid 1px;
+        border-radius: 3rem;
+        padding: 1rem 2rem;
+        // background: rgba( 255, 255, 255, 0.25 );
+        // backdrop-filter: blur( 4px );
+        // -webkit-backdrop-filter: blur( 4px );
+
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
