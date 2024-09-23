@@ -14,14 +14,16 @@ export default function ImageUploader(){
         <div className={s.image_uploader}>
             <div className={s.images}>
                 {IMAGES.map((image:string, index : number) => (
-                    <div className={s.image_holder}>
+                    <div 
+                        className={s.image_holder}
+                        key={index}
+                    >
                         <Image
                             className={s.image}
                             src={image}
                             alt={`image ${index}`}
                             width={204}
                             height={272}
-                            key={index}
                         />
                     </div>
                 ))}
