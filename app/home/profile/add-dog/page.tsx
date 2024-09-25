@@ -1,6 +1,6 @@
 import AddDogForm from "@/app/ui/home/profile/add-dog/add-dog-form"
 import s from "./page.module.scss"
-import ImageUploader from "@/app/ui/home/profile/add-dog/image-uploader"
+// import ImageUploader from "@/app/ui/home/profile/add-dog/image-uploader"
 import { auth } from "@/auth";
 import { User } from "@/model/user-model";
 
