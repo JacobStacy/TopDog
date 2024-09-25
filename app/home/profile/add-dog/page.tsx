@@ -19,7 +19,7 @@ export default async function AddDog() {
 
 
 
-    const response = await fetch('/api/get-dogs?getBlank=true');
+    const response = await fetch('/api/get-dog?getBlank=true');
 
     if (!response.ok) {
         throw new Error("Failed to fetch dogs");
