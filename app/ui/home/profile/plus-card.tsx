@@ -36,10 +36,7 @@ export default function PlusCard() {
 
     return (
         <Link 
-            href={{
-                pathname: '/home/profile/add-dog',
-                query: { getBlank: 'true' },
-            }}
+            href='/home/profile/add-dog?getBlank=true'
             onClick={handleClick}
         >
             <ProfileCard className={styles.card}>＋</ProfileCard>

@@ -88,10 +88,7 @@ export default function DogCard({
                             <div className={styles.options_menu}>
                                 <Link
                                     className={styles.option}
-                                    href={{
-                                        pathname: '/home/profile/add-dog',
-                                        query: { dogId: id.toString()},
-                                    }}
+                                    href={`/home/profile/add-dog?dogId=${id.toString()}`}
                                 >
                                     <div>
                                         Edit
