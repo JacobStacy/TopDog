@@ -50,9 +50,11 @@ export const PATCH = async (request: NextRequest) => {
         }
     }
 
-    return new NextResponse("Dog has been updated",
-        { status: 201 },
-    );
+    // Return response with imageUrl that was added
+    return NextResponse.json({
+        message: "Dog has been updated",
+        imageUrl: imageUrl,
+    }, { status: 201 });
 
 
 }

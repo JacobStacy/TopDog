@@ -92,7 +92,7 @@ export default function ImageUploader() {
 
 
     
-    const handleAddImage = () => {
+    const handlePlusClick = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click(); // Trigger file input when add_image is clicked
         }
@@ -121,6 +121,19 @@ export default function ImageUploader() {
                 if (!response.ok) {
                     throw new Error("Error with upload");
                 }
+
+                const data: { message: string, imageUrl: string } = await response.json();
+
+
+                if (dogData){
+                    // Update dogData with the new image URL
+                    let newDogData = { 
+                        ...dogData, 
+                        imageUrls: [...(dogData?.imageUrls || []), data.imageUrl] 
+                    };
+                    setDogData(newDogData);
+                }
+
 
                 // Handle successful upload (e.g., update UI, display success message)
                 console.log("Image uploaded successfully!");
@@ -152,7 +165,7 @@ export default function ImageUploader() {
                 ))}
                 <div
                     className={s.add_image}
-                    onClick={handleAddImage}
+                    onClick={handlePlusClick}
                     aria-label="Click to add new image"
                 >
                     ＋
