@@ -51,43 +51,43 @@ export default function ImageUploader() {
         
     }, [getBlank, dogIdParam]);
 
-    useEffect(() => {
-        const updateImages = async () => {
-            console.log("updating images");
+    // useEffect(() => {
+    //     const updateImages = async () => {
+    //         console.log("updating images");
     
-            const signedUrls: string[] = [];
+    //         const signedUrls: string[] = [];
     
-            console.log(dogData?.imageUrls);
-            if (dogData?.imageUrls) {
-                for (const unSignedUrl of dogData.imageUrls) {
-                    try {
-                        const response = await fetch('/api/get-image', {
-                            method: 'PATCH',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ unSignedUrl }),
-                        });
+    //         console.log(dogData?.imageUrls);
+    //         if (dogData?.imageUrls) {
+    //             for (const unSignedUrl of dogData.imageUrls) {
+    //                 try {
+    //                     const response = await fetch('/api/get-image', {
+    //                         method: 'PATCH',
+    //                         headers: {
+    //                             'Content-Type': 'application/json',
+    //                         },
+    //                         body: JSON.stringify({ unSignedUrl }),
+    //                     });
     
-                        if (!response.ok) {
-                            throw new Error('Failed to fetch signed URL');
-                        }
+    //                     if (!response.ok) {
+    //                         throw new Error('Failed to fetch signed URL');
+    //                     }
     
-                        const data = await response.json();
-                        console.log(data);
-                        signedUrls.push(data);
-                    } catch (error) {
-                        console.error("Error fetching signed URL:", error);
-                    }
-                }
-            }
+    //                     const data = await response.json();
+    //                     console.log(data);
+    //                     signedUrls.push(data);
+    //                 } catch (error) {
+    //                     console.error("Error fetching signed URL:", error);
+    //                 }
+    //             }
+    //         }
     
-            setImages(signedUrls);
-            console.log(signedUrls);
-        };
+    //         setImages(signedUrls);
+    //         console.log(signedUrls);
+    //     };
     
-        updateImages();
-    }, [dogData]); // Remove `images` from the dependency array
+    //     updateImages();
+    // }, [dogData]); // Remove `images` from the dependency array
     
 
 
