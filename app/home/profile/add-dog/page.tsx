@@ -40,7 +40,7 @@ export default async function AddDog() {
         return (
             <div className={s.add_dog}>
                 {/* <ImageUploader/> */}
-                <AddDogForm/>
+                {/* <AddDogForm/> */}
             </div >
         )
     }
