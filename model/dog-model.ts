@@ -8,7 +8,9 @@ export type DogType = {
     rank: number,
     likes: number,
     imageUrls: string[],
+    completed: boolean,
     user: Schema.Types.ObjectId, // Foreign key reference to the User model
+    _id: Schema.Types.ObjectId,
 }
 
 const dogSchema = new Schema({
@@ -33,6 +35,10 @@ const dogSchema = new Schema({
     likes: {
         type: Number,
         default: 0,
+    },
+    completed: {
+        required: true,
+        type: Boolean,
     },
     imageUrls: {
         type: [String],

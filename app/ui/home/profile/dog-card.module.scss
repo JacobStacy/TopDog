@@ -29,13 +29,14 @@
         margin-left: 3%;
         font-size: .75rem;
 
-        
+        width: 100%;
 
 
         .top_line {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            
             
             .name_age {
                 font-weight: 500;
@@ -68,6 +69,19 @@
                             border: 1px solid #ffffff2e;
 
                             padding: .5vh 1vh;
+
+                            font-size: 1rem;
+
+                            color: #fff;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+
+                            &:visited {
+                                color:#fff;
+                                text-decoration: none;
+                            }
 
                             &:last-child {
                                 background-color: #ff808040;

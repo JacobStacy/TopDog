@@ -24,6 +24,10 @@
         column-gap: 1%;
         row-gap: 3vh;
 
+        input {
+            display: none;
+        }
+
         .image_holder {
             border-radius: 10px;
             box-shadow: 0 0 6px #ffffff;
@@ -53,11 +57,14 @@
             width: calc(13.5vh - 1px);
             width: calc(13.5dvh - 1px);
 
-            // overflow: hidden;
-
             display: flex;
             justify-content: center;
             align-items: center;
+
+            &:hover {
+                cursor: pointer;
+            }
+
 
             font-size: 4rem;
             font-weight: 900;

@@ -10,6 +10,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'avatars.githubusercontent.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'topdog-image-upload.s3.us-east-2.amazonaws.com',
+            },
         ],
     },
     webpack(config) {
