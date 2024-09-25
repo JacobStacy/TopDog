@@ -91,7 +91,7 @@ export default function ImageUploader() {
         };
     
         updateImages();
-    }, [dogData])
+    }, [dogData, images])
 
 
     
