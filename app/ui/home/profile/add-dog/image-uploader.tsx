@@ -57,9 +57,8 @@ export default function ImageUploader() {
     
             const signedUrls: string[] = [];
     
-            console.log(dogData?.imageUrls)
+            console.log(dogData?.imageUrls);
             if (dogData?.imageUrls) {
-            
                 for (const unSignedUrl of dogData.imageUrls) {
                     try {
                         const response = await fetch('/api/get-image', {
@@ -83,15 +82,13 @@ export default function ImageUploader() {
                 }
             }
     
-    
-            
             setImages(signedUrls);
-            console.log(images)
-            
+            console.log(signedUrls);
         };
     
         updateImages();
-    }, [dogData, images])
+    }, [dogData]); // Remove `images` from the dependency array
+    
 
 
     

@@ -18,35 +18,34 @@ export default function AddDogForm() {
     const dogIdParam = params.get("dogId");
 
     useEffect(() => {
-        const fetchDogData = async () => {
-            try {
-                if (getBlank) {
-                    const response = await fetch("/api/get-dog?getBlank=true");
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch dog");
+        if (!dogData) {
+            const fetchDogData = async () => {
+                try {
+                    let url = "/api/get-dog";
+                    if (getBlank) {
+                        url += "?getBlank=true";
+                    } else if (dogIdParam) {
+                        url += `?dogId=${dogIdParam}`;
+                    } else {
+                        return; // No need to fetch if neither parameter is set
                     }
-                    const data = await response.json();
-                    console.log("dog data", data)
-                    setDogData(data);
-                } else{
-                    const response = await fetch(`/api/get-dog?dogId=${dogIdParam}`);
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch dog");
-                    }
-                    const data = await response.json();
-                    console.log("dog data", data)
-                    setDogData(data);
-                }
-                
-                
-            } catch (error) {
-                if (error instanceof Error) {
-                    setError(error.message);
-                }
-            }
-        };
 
-        fetchDogData();
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch dog");
+                    }
+                    const data = await response.json();
+                    console.log("dog data", data);
+                    setDogData(data);
+                } catch (error) {
+                    if (error instanceof Error) {
+                        setError(error.message);
+                    }
+                }
+            };
+
+            fetchDogData();
+        }
     }, [getBlank, dogIdParam]);
 
     const [error, setError] = useState("");
@@ -60,7 +59,7 @@ export default function AddDogForm() {
             if (!dogId) {
                 throw new Error("Dog Id not found")
             }
-            
+
             const formData = new FormData(event.currentTarget);
 
             const name = formData.get('name');
