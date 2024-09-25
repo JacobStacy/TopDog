@@ -11,7 +11,8 @@ import { DogType } from "@/model/dog-model";
 export default function ImageUploader() {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [dogData, setDogData] = useState<DogType | null>(null);
-    const [images, setImages] = useState<string[]>([])
+    // const [images, setImages] = useState<string[]>([])
+    const [images] = useState<string[]>([])
 
     const params = useSearchParams();
     const getBlank = params.get("getBlank") === "true";

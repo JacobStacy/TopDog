@@ -46,7 +46,7 @@ export default function AddDogForm() {
 
             fetchDogData();
         }
-    }, [getBlank, dogIdParam]);
+    }, [getBlank, dogIdParam, dogData]);
 
     const [error, setError] = useState("");
     const router = useRouter();
