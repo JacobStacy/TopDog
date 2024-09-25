@@ -16,7 +16,6 @@ export const POST = async(request : NextRequest) => {
         bio,
         rank,
         likes,
-        imageUrls,
         completed
     } = await request.json();
 
@@ -98,7 +97,6 @@ export const PATCH = async(request : NextRequest) => {
         bio,
         rank,
         likes,
-        completed
     } = await request.json();
 
     const updatedDog = {

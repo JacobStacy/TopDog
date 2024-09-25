@@ -78,7 +78,7 @@ async function uploadImageToS3(imageFile: File): Promise<string> {
 
 
     try {
-        const data = await s3.send(new PutObjectCommand(uploadParams));
+        await s3.send(new PutObjectCommand(uploadParams));
         return outFileName; // Construct the image URL
     } catch (error) {
         throw error; // Rethrow the error for proper handling

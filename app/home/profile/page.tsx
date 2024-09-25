@@ -4,9 +4,10 @@ import PlusCard from "@/app/ui/home/profile/plus-card"
 // import styles from "./page.module.scss"
 import DogCard from "@/app/ui/home/profile/dog-card"
 import { useEffect, useState } from "react";
+import { DogType } from "@/model/dog-model";
 
 export default function Profile() {
-    const [dogs, setDogs] = useState<any[]>([]);
+    const [dogs, setDogs] = useState<DogType[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -34,6 +35,7 @@ export default function Profile() {
 
     return (
         <div>
+            {error}
             {dogs.length > 0 ? (
                 <ul>
                     {dogs.map((dog, index) => (

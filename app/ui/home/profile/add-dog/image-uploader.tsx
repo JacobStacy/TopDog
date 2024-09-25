@@ -52,48 +52,49 @@ export default function ImageUploader() {
     }, [getBlank, dogIdParam]);
 
     useEffect(() => {
+        const updateImages = async () => {
+            console.log("updating images");
+    
+            const signedUrls: string[] = [];
+    
+            console.log(dogData?.imageUrls)
+            if (dogData?.imageUrls) {
+            
+                for (const unSignedUrl of dogData.imageUrls) {
+                    try {
+                        const response = await fetch('/api/get-image', {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ unSignedUrl }),
+                        });
+    
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch signed URL');
+                        }
+    
+                        const data = await response.json();
+                        console.log(data);
+                        signedUrls.push(data);
+                    } catch (error) {
+                        console.error("Error fetching signed URL:", error);
+                    }
+                }
+            }
+    
+    
+            
+            setImages(signedUrls);
+            console.log(images)
+            
+        };
+    
         updateImages();
     }, [dogData])
 
 
-    const updateImages = async () => {
-        console.log("updating images");
-
-        let signedUrls: string[] = [];
-
-        console.log(dogData?.imageUrls)
-        if (dogData?.imageUrls) {
-        
-            for (const unSignedUrl of dogData.imageUrls) {
-                try {
-                    const response = await fetch('/api/get-image', {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ unSignedUrl }),
-                    });
-
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch signed URL');
-                    }
-
-                    const data = await response.json();
-                    console.log(data);
-                    signedUrls.push(data);
-                } catch (error) {
-                    console.error("Error fetching signed URL:", error);
-                }
-            }
-        }
-
-
-        
-        setImages(signedUrls);
-        console.log(images)
-        
-    };
-
+    
     const handleAddImage = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click(); // Trigger file input when add_image is clicked
@@ -126,7 +127,6 @@ export default function ImageUploader() {
 
                 // Handle successful upload (e.g., update UI, display success message)
                 console.log("Image uploaded successfully!");
-                updateImages();
             } catch (error) {
                 console.error("Error uploading image:", error);
                 // Handle upload errors (e.g., display error message)

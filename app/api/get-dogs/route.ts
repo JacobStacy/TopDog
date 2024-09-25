@@ -1,5 +1,5 @@
 "use server"
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { dbConnect } from "@/lib/mongo";
 import { auth } from "@/auth";
 import { User } from "@/model/user-model";

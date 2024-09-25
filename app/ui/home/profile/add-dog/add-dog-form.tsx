@@ -47,7 +47,7 @@ export default function AddDogForm() {
         };
 
         fetchDogData();
-    }, [getBlank]);
+    }, [getBlank, dogIdParam]);
 
     const [error, setError] = useState("");
     const router = useRouter();
@@ -107,7 +107,7 @@ export default function AddDogForm() {
     return (
         <div className={`${s.add_dog} ${montserrat.className}`}>
             <div className={s.error_msg}>
-                {/* {error} */}
+                {error}
             </div>
             <form onSubmit={handleFormSubmit}>
                 <div className={s.fields}>

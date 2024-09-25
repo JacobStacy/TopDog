@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Schema } from "mongoose";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
+import { DogType } from "@/model/dog-model";
 
 export default function DogCard({
     id,
@@ -25,8 +26,8 @@ export default function DogCard({
     likes: number;
     rank: number;
     image: string;
-    currentDogs: any[];
-    setDogs: Dispatch<SetStateAction<any[]>>;
+    currentDogs: DogType[];
+    setDogs: Dispatch<SetStateAction<DogType[]>>;
 }) {
     
 
@@ -51,7 +52,7 @@ export default function DogCard({
                 } 
 
                 // Update dogs state 
-                const filteredDogs = currentDogs.filter((dog: any) => dog._id !== id);
+                const filteredDogs = currentDogs.filter((dog: DogType) => dog._id !== id);
                 setDogs(filteredDogs);
 
             } catch (error) {
