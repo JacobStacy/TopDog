@@ -11,8 +11,7 @@ import { DogType } from "@/model/dog-model";
 export default function ImageUploader() {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [dogData, setDogData] = useState<DogType | null>(null);
-    // const [images, setImages] = useState<string[]>([])
-    const [images] = useState<string[]>([])
+    const [images, setImages] = useState<string[]>([])
 
     const params = useSearchParams();
     const getBlank = params.get("getBlank") === "true";
@@ -52,43 +51,43 @@ export default function ImageUploader() {
         
     }, [getBlank, dogIdParam]);
 
-    // useEffect(() => {
-    //     const updateImages = async () => {
-    //         console.log("updating images");
+    useEffect(() => {
+        const updateImages = async () => {
+            console.log("updating images");
     
-    //         const signedUrls: string[] = [];
+            const signedUrls: string[] = [];
     
-    //         console.log(dogData?.imageUrls);
-    //         if (dogData?.imageUrls) {
-    //             for (const unSignedUrl of dogData.imageUrls) {
-    //                 try {
-    //                     const response = await fetch('/api/get-image', {
-    //                         method: 'PATCH',
-    //                         headers: {
-    //                             'Content-Type': 'application/json',
-    //                         },
-    //                         body: JSON.stringify({ unSignedUrl }),
-    //                     });
+            console.log(dogData?.imageUrls);
+            if (dogData?.imageUrls) {
+                for (const unSignedUrl of dogData.imageUrls) {
+                    try {
+                        const response = await fetch('/api/get-image', {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ unSignedUrl }),
+                        });
     
-    //                     if (!response.ok) {
-    //                         throw new Error('Failed to fetch signed URL');
-    //                     }
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch signed URL');
+                        }
     
-    //                     const data = await response.json();
-    //                     console.log(data);
-    //                     signedUrls.push(data);
-    //                 } catch (error) {
-    //                     console.error("Error fetching signed URL:", error);
-    //                 }
-    //             }
-    //         }
+                        const data = await response.json();
+                        console.log(data);
+                        signedUrls.push(data);
+                    } catch (error) {
+                        console.error("Error fetching signed URL:", error);
+                    }
+                }
+            }
     
-    //         setImages(signedUrls);
-    //         console.log(signedUrls);
-    //     };
+            setImages(signedUrls);
+            console.log(signedUrls);
+        };
     
-    //     updateImages();
-    // }, [dogData]); // Remove `images` from the dependency array
+        updateImages();
+    }, [dogData]); // Remove `images` from the dependency array
     
 
 
