@@ -10,11 +10,11 @@ export default async function AddDog() {
 
 
     
-    const session = await auth();
-    console.log(session?.user?.email);
-    const user = await User.findOne({
-        email: session?.user?.email,
-    });
+    // const session = await auth();
+    // console.log(session?.user?.email);
+    // const user = await User.findOne({
+    //     email: session?.user?.email,
+    // });
 
 
 
@@ -28,21 +28,21 @@ export default async function AddDog() {
 
     
 
-    console.log(user)
-    // Check if the user exists
-    if (!user) {
-        return (
-            <div>
-                Busted
-            </div>
-        )
-    } else {
+    // console.log(user)
+    // // Check if the user exists
+    // if (!user) {
+    //     return (
+    //         <div>
+    //             Busted
+    //         </div>
+    //     )
+    // } else {
         return (
             <div className={s.add_dog}>
                 {/* <ImageUploader/> */}
                 {/* <AddDogForm/> */}
             </div >
         )
-    }
+    // }
 
 }
