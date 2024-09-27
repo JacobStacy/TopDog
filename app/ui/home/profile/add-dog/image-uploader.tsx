@@ -127,7 +127,7 @@ export default function ImageUploader() {
 
                 if (dogData) {
                     // Update dogData with the new image URL
-                    let newDogData = {
+                    const newDogData = {
                         ...dogData,
                         imageUrls: [...(dogData?.imageUrls || []), data.imageUrl]
                     };
