@@ -18,8 +18,6 @@ export const GET = async (request: NextRequest) => {
   }
 
   try {
-
-
     const getBlank = request.nextUrl.searchParams.get("getBlank") === "true";
 
     let dogId = null;

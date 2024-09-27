@@ -4,6 +4,7 @@ import ImageUploader from "@/app/ui/home/profile/add-dog/image-uploader"
 import { auth } from "@/auth";
 import { User } from "@/model/user-model";
 import { dbConnect } from "@/lib/mongo";
+import { redirect } from "next/navigation";
 
 
 
@@ -29,14 +30,10 @@ export default async function AddDog() {
 
     
 
-    console.log(user)
+    
     // Check if the user exists
     if (!user) {
-        return (
-            <div>
-                Busted
-            </div>
-        )
+        redirect("/get-started")
     } else {
         return (
             <div className={s.add_dog}>

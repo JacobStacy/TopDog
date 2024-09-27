@@ -32,13 +32,61 @@
             border-radius: 10px;
             box-shadow: 0 0 6px #ffffff;
             overflow: hidden;
+            position: relative;
+
+            // padding: 1vh;
+            background: #ffffff40;
+            // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            border: 1px solid #ffffff2e;
 
             .image {
                 height: 18vh;
                 height: 18dvh;
                 width: 13.5vh;
                 width: 13.5dvh;
+                // border-radius: 10px;
     
+            }
+
+            .delete {
+                position: absolute;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                
+                color: #fff;
+                font-weight: 100;
+
+                background-color: #ff808040;
+                border: 1px solid #ff80802e;
+                // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                backdrop-filter: blur( 4px );
+                -webkit-backdrop-filter: blur( 4px );
+                border-radius: 50%;
+
+                height: 2.5vh;
+                height: 2.5dvh;
+                width: 2.5vh;
+                width: 2.5dvh;
+
+                z-index: 99;
+                left: calc(0% - (2.5vh/3));
+                top: calc(0% - (2.5vh/3));
+                left: 3%;
+                top: 3%;
+
+                .cross path {
+                    fill: #fff;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
 

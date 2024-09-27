@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { DogType } from "@/model/dog-model";
+import CrossIcon from "@/public/cross-icon.svg"
 
 
 export default function ImageUploader() {
@@ -28,7 +29,7 @@ export default function ImageUploader() {
                     const data = await response.json();
                     console.log("dog data", data)
                     setDogData(data);
-                } else{
+                } else {
                     const response = await fetch(`/api/get-dog?dogId=${dogIdParam}`);
                     if (!response.ok) {
                         throw new Error("Failed to fetch dog");
@@ -36,10 +37,10 @@ export default function ImageUploader() {
                     const data = await response.json();
                     console.log("dog data", data)
                     setDogData(data);
-                    
+
                 }
-                
-                
+
+
             } catch (error) {
                 if (error instanceof Error) {
                     throw new Error(error.message);
@@ -48,16 +49,15 @@ export default function ImageUploader() {
         };
 
         fetchDogData();
-        
+
     }, [getBlank, dogIdParam]);
 
     useEffect(() => {
         const updateImages = async () => {
             console.log("updating images");
-    
+
             const signedUrls: string[] = [];
-    
-            console.log(dogData?.imageUrls);
+
             if (dogData?.imageUrls) {
                 for (const unSignedUrl of dogData.imageUrls) {
                     try {
@@ -68,11 +68,11 @@ export default function ImageUploader() {
                             },
                             body: JSON.stringify({ unSignedUrl }),
                         });
-    
+
                         if (!response.ok) {
                             throw new Error('Failed to fetch signed URL');
                         }
-    
+
                         const data = await response.json();
                         console.log(data);
                         signedUrls.push(data);
@@ -81,17 +81,17 @@ export default function ImageUploader() {
                     }
                 }
             }
-    
+
             setImages(signedUrls);
             console.log(signedUrls);
         };
-    
+
         updateImages();
     }, [dogData]); // Remove `images` from the dependency array
-    
 
 
-    
+
+
     const handlePlusClick = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click(); // Trigger file input when add_image is clicked
@@ -117,7 +117,7 @@ export default function ImageUploader() {
                     body: formData,
                 });
 
-                
+
                 if (!response.ok) {
                     throw new Error("Error with upload");
                 }
@@ -125,11 +125,11 @@ export default function ImageUploader() {
                 const data: { message: string, imageUrl: string } = await response.json();
 
 
-                if (dogData){
+                if (dogData) {
                     // Update dogData with the new image URL
-                    let newDogData = { 
-                        ...dogData, 
-                        imageUrls: [...(dogData?.imageUrls || []), data.imageUrl] 
+                    let newDogData = {
+                        ...dogData,
+                        imageUrls: [...(dogData?.imageUrls || []), data.imageUrl]
                     };
                     setDogData(newDogData);
                 }
@@ -144,7 +144,51 @@ export default function ImageUploader() {
         }
 
 
+
     }
+
+
+    const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        const imageToDelete = e.currentTarget.getAttribute("data-image")?.replace(/^.*\/([^\/?]+)(\?.*)?$/, '$1');
+        if (imageToDelete && dogData) {
+            // Create a FormData object to send the necessary data
+            const formData = new FormData();
+            formData.append("dogId", dogData._id.toString()); // Add dogId
+            formData.append("imageUrl", imageToDelete); // Add the image URL to delete
+
+            // Send the request to the server-side API endpoint for deletion
+            try {
+                const response = await fetch("/api/add-image", {
+                    method: "DELETE",
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error("Error with image deletion");
+                }
+
+                const data: { message: string } = await response.json();
+                console.log(data.message); // Log the server response
+
+                // Update the UI to reflect the deleted image
+                const updatedImages = images.filter(image => image !== imageToDelete);
+                setImages(updatedImages);
+
+                // Optionally, update dogData to reflect the removed image URL
+                const updatedDogData = {
+                    ...dogData,
+                    imageUrls: dogData.imageUrls.filter(url => url !== imageToDelete),
+                };
+                setDogData(updatedDogData);
+
+                console.log("Image deleted successfully!");
+            } catch (error) {
+                console.error("Error deleting image:", error);
+                // Handle deletion errors (e.g., display error message)
+            }
+        }
+    }
+
 
     return (
         <div className={s.image_uploader}>
@@ -157,10 +201,18 @@ export default function ImageUploader() {
                         <Image
                             className={s.image}
                             src={image}
-                            alt={`image ${index}`}
+                            alt={`Image ${index}`}
                             width={204}
                             height={272}
                         />
+                        <button
+                            className={s.delete}
+                            aria-label={`Delete image ${index}`}
+                            onClick={handleDelete}
+                            data-image={image}
+                        >
+                            <CrossIcon className={s.cross} />
+                        </button>
                     </div>
                 ))}
                 <div

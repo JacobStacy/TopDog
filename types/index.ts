@@ -1,5 +1,7 @@
 import { StaticImageData } from 'next/image';
 import { Dispatch, SetStateAction } from 'react';
+import { DogType } from '@/model/dog-model';
+import { Schema } from 'mongoose';
 
 type TracksData = {
   name: string;
@@ -16,18 +18,14 @@ export type PhotoCardData = {
 };
 
 export type PhotoCardProps = {
-  data: PhotoCardData;
+  data: DogType;
   active: boolean;
-  removeCard: (id: number, action: 'right' | 'left') => void;
-  // getExit: (setState: Dispatch<SetStateAction<number>>) => void;
-  // exitX: number;
-  // setExitX: (newExit: number) => void;
+  onDeck: boolean;
+  removeCard: (id: Schema.Types.ObjectId, action: 'right' | 'left') => void;
 };
 
 export type IActionBtnsProps = {
   triggerSwipeLeft: () => void;
   triggerSwipeRight: () => void;
-  removeCard: (id: number, action: 'right' | 'left') => void;
-  
-  // id: number;
+  removeCard: (id: Schema.Types.ObjectId, action: 'right' | 'left') => void;
 };

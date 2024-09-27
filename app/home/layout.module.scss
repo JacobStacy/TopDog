@@ -19,6 +19,17 @@
 
     color: #fff;
 
+    a {
+        color: #fff;
+        text-decoration: none;
+
+        &visited {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+
+
 }
 
 .home_footer{
@@ -60,6 +71,10 @@
             button {
                 background-color: #ffffff00;
                 border: none;
+
+                &:hover {
+                    cursor:pointer;
+                }
             }
 
             svg {

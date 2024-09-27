@@ -43,6 +43,9 @@ const nextConfig = {
 
         return config;
     },
+    experimental: {
+        serverComponentsExternalPackages: ["dockerode"],
+    },
 };
 
 export default nextConfig;

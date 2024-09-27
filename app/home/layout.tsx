@@ -5,6 +5,7 @@ import RankIcon from "@/public/rank-icon.svg"
 import UserIcon from "@/public/user-icon.svg"
 import { logout } from "@/app/actions";
 import Link from "next/link";
+import { SessionProvider } from "next-auth/react";
 
 
 export default function HomeLayout( {
@@ -18,10 +19,13 @@ export default function HomeLayout( {
                 ${styles.home_header}
                 ${montserrat.className}
             `}>
-                TopDog
+                <Link href="/">TopDog</Link>
+                
             </header>
             <main className={styles.main}>
-                {children}
+                <SessionProvider>
+                    {children}
+                </SessionProvider>
             </main>
             <footer className={styles.home_footer}>
                 <nav>
@@ -34,11 +38,11 @@ export default function HomeLayout( {
                             </Link>
                         </li>
                         <li>
-                            <form action={logout}>
+                            <Link href="/home/leaderboard">
                                 <button aria-label="Leaderboard">
                                     <RankIcon className={styles.rank}/>
                                 </button>
-                            </form>
+                            </Link>
                         </li>
                         <li>
                             <Link href="/home/profile">

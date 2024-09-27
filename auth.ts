@@ -27,7 +27,7 @@ export const {
                 email: {},
                 password: {},
             },
-            async authorize(credentials) : Promise<UserType | null> {
+            async authorize(credentials): Promise<UserType | null> {
                 console.log("credentials", credentials);
                 if (credentials === null) return null;
 
@@ -43,7 +43,7 @@ export const {
                             password,
                             user?.password
                         );
-                        
+
                         if (isMatch) {
                             return user;
                         } else {
@@ -53,7 +53,7 @@ export const {
                     } else {
                         throw new Error("Username or Password is incorrect")
                     }
-                } catch (error){   
+                } catch (error) {
                     if (error instanceof Error) {
                         throw new Error(error.message);
                     } else {

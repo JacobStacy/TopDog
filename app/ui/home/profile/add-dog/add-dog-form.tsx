@@ -5,6 +5,7 @@ import s from "./add-dog-form.module.scss"
 import { montserrat } from '@/app/ui/fonts';
 import { useEffect, useState } from "react"
 import { DogType } from "@/model/dog-model";
+import { addDogSchema } from "@/utils/zod";
 
 
 
@@ -40,6 +41,7 @@ export default function AddDogForm() {
                 } catch (error) {
                     if (error instanceof Error) {
                         setError(error.message);
+                        throw error;
                     }
                 }
             };
@@ -62,36 +64,53 @@ export default function AddDogForm() {
 
             const formData = new FormData(event.currentTarget);
 
-            const name = formData.get('name');
-            const age = formData.get('age');
-            const breed = formData.get('breed');
-            const bio = formData.get('bio');
-            const images = formData.getAll('images');
+            const nameForm = formData.get('name');
+            const ageForm = Number(formData.get('age')?.toString());
+            const breedForm = formData.get('breed');
+            const bioForm = formData.get('bio');
+            
 
-            const response = await fetch(`/api/create-dog`, { // Use the correct update endpoint
-                method: "PATCH", // Change to PATCH or PUT depending on your API design
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    dogId,
-                    name,
-                    age,
-                    breed,
-                    bio,
-                    imageUrls: images,
-                    completed: false, // Adjust as needed; can be omitted if not updating
+            
+            try {
+                console.log(formData)
+                const {name, age, breed, bio} = await addDogSchema.parseAsync({
+                    name: nameForm,
+                    age: ageForm,
+                    breed: breedForm,
+                    bio: bioForm,
                 })
-            });
 
+                const response = await fetch(`/api/create-dog`, {
+                    method: "PATCH", 
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        dogId,
+                        name,
+                        age,
+                        breed,
+                        bio,
+                        imageUrls: [],
+                        completed: true, 
+                    })
+                });
 
-            if (response.ok) {
-                router.push("/home/profile");
-            } else {
-                const errorData = await response.json();
-                setError(errorData.error || "Failed to update dog");
+                if (response.ok) {
+                    router.push("/home/profile");
+                } else {
+                    const errorData = await response.json();
+                    setError(errorData.error || "Failed to update dog");
+                    throw new Error(errorData.error);
+                }
+
+            } catch(e) {
+                if (e instanceof Error) {
+                    setError(e.message);
+                } else {
+                    throw new Error("Error in update submit handler");
+                }
             }
-
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message);

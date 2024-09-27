@@ -1,12 +1,14 @@
-
 'use client'
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import PhotoCard from "@/app/ui/home/photo-card";
 import IActionButtons from "../ui/home/iaction-btns";
-import { PhotoCardData } from "@/types";
-import { photoCardData } from "@/utils/data";
 import styles from "./page.module.scss";
+import { DogType } from "@/model/dog-model";
+import { Schema } from "mongoose";
+import { montserrat } from '@/app/ui/fonts';
+import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 interface PhotoCardHandle {
     triggerSwipeLeft: () => void;
@@ -14,21 +16,88 @@ interface PhotoCardHandle {
 }
 
 export default function Home() {
-    const [cards, setCards] = useState<PhotoCardData[]>(photoCardData);
-    // const [rightSwipe, setRightSwipe] = useState(0);
-    // const [leftSwipe, setLeftSwipe] = useState(0);
+
+
+    const [cards, setCards] = useState<DogType[]>([]);
+    const [limitRate, setLimitRate] = useState<boolean>(false);
+    const session = useSession();
 
     const cardRef = useRef<PhotoCardHandle[]>([]);
     const activeIndex = cards.length - 1;
 
-    const removeCard = (id: number, action: 'right' | 'left') => {
-        setCards(prev => prev.filter(card => card.id !== id));
-        if (action === 'right') {
-            // setRightSwipe(prev => prev + 1);
-            console.log("right action");
-        } else {
-            // setLeftSwipe(prev => prev + 1);
-            console.log("left action");
+
+    useEffect(() => {
+        if (session?.status == "unauthenticated") {
+            redirect("/get-started"); // Redirect if session exists
+        }
+    }, [session]);
+
+    const getDogs = async () => {
+        try {
+            const response = await fetch('/api/get-dogs?isFrontPage=true');
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch dogs');
+            }
+
+            const data = await response.json();
+            console.log("data", data);
+
+            if (data.length > 0) {
+                setLimitRate(false);
+            } else {
+                setLimitRate(true);
+            }
+
+            setCards(data);
+        } catch (error) {
+            console.error("Error fetching dogs:", error);
+        }
+    };
+
+    useEffect(() => {
+        getDogs();
+    }, []);
+
+    useEffect(() => {
+        if (cards.length === 0) {
+
+            if (limitRate){
+                console.log("Pulling again in 20s")
+                const timer = setTimeout(() => {
+                    getDogs();
+                }, 20000);
+    
+                return () => clearTimeout(timer);
+            } else {
+                getDogs();
+            }
+        }
+    }, [cards]);
+
+    const removeCard = async (id: Schema.Types.ObjectId, action: 'right' | 'left') => {
+        console.log("in remove card ==============")
+        setCards(prev => prev.filter(card => card._id !== id));
+
+        const formData = new FormData();
+        formData.append("dogId", id.toString() || "");
+        formData.append("swipe", action);
+
+        console.log("formData:", formData);
+
+        try {
+            console.log("dogID", id);
+            const response = await fetch('/api/interaction', {
+                method: "PATCH",
+                body: formData,
+            });
+            if (!response.ok) {
+                console.log(response);
+                throw new Error('Failed to send interaction');
+            }
+
+        } catch (error) {
+            console.error(error);
         }
     };
 
@@ -39,17 +108,20 @@ export default function Home() {
                     {cards.length ? (
                         cards.map((card, index) => (
                             <PhotoCard
-                                key={card.id}
+                                key={card._id.toString()}
                                 data={card}
-                                active={card.id === activeIndex}
+                                active={card._id === cards[activeIndex]._id}
+                                onDeck={activeIndex - 1 >= 0 && card._id === cards[activeIndex - 1]._id}
                                 removeCard={removeCard}
                                 ref={(el) => { cardRef.current[index] = el as PhotoCardHandle; }}
                             />
                         ))
                     ) : (
-                        <h2>
-                            Come back tomorrow for more
-                        </h2>
+                        <div className={`${styles.empty} ${montserrat.className}`}>
+                            We're all out for now :(
+                            <br /><br />
+                            Come back later for more!!
+                        </div>
                     )}
                 </AnimatePresence>
             </div>

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import styles from "./plus-card.module.scss"
-import ProfileCard from "./profile-card"
+import ProfileCard from "../profile-card"
 
 
 

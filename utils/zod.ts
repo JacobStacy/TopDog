@@ -1,5 +1,5 @@
-import { object, string } from "zod"
- 
+import { object, string, number} from "zod"
+
 export const signInSchema = object({
   email: string({ required_error: "Email is required" })
     .min(1, "Email is required")
@@ -7,3 +7,19 @@ export const signInSchema = object({
   password: string({ required_error: "Password is required" })
     .min(1, "Password is required"),
 })
+
+
+export const addDogSchema = object({
+  name: string({ required_error: "Name is required" })
+    .min(1, "Name is required"),
+
+  age: number({ required_error: "Age is required" })
+    .min(0, "Age must be a positive number"),
+
+  bio: string({ required_error: "Bio is required" })
+    .min(1, "Bio is required")
+    .max(120, "Bio cannot exceed 120 characters"),
+
+  breed: string({ required_error: "Breed is required" })
+    .min(1, "Breed is required"),
+});

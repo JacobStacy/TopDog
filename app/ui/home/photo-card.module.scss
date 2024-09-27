@@ -18,17 +18,21 @@
     border-radius: 10px;
     overflow: hidden;
 
+    &.hidden {
+        display: none;
+    }
+    
+
 
     .picture {
         width: 100%;
         height: auto;
 
         aspect-ratio: 3/4;
-        // display: none;
 
-        // &.selected{
-        //     display: block;
-        // }
+        &.hidden {
+            display: none;
+        }
     }
 
     .overlay {

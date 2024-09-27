@@ -1,26 +1,25 @@
 "use client"
-// import ProfileCard from "@/app/ui/home/profile/profile-card"
-import PlusCard from "@/app/ui/home/profile/plus-card"
-// import styles from "./page.module.scss"
+import s from "./page.module.scss"
 import DogCard from "@/app/ui/home/dog-card"
 import { useEffect, useState } from "react";
 import { DogType } from "@/model/dog-model";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { montserrat } from "@/app/ui/fonts";
 
-export default function Profile() {
+
+export default function Leaderboard(){
+
+
     const [dogs, setDogs] = useState<DogType[]>([]);
     const [error, setError] = useState<string | null>(null);
 
-    const session = useSession();
-    if (!session?.data?.user?.email) {
-        redirect("/get-started"); // Redirect if session exists
-    }
+    
 
     useEffect(() => {
         const fetchDogs = async () => {
             try {
-                const response = await fetch('/api/get-dogs');
+                const response = await fetch('/api/get-dogs?isLeaderboard=true');
 
                 if (!response.ok) {
                     throw new Error("Failed to fetch dogs");
@@ -39,10 +38,10 @@ export default function Profile() {
 
         fetchDogs();
     }, []);
-
     return (
         <div>
             {error}
+            <div className={`${s.header} ${montserrat.className}`}> This Weeks Top Dogs</div>
             {dogs.length > 0 ? (
                 <ul>
                     {dogs.map((dog, index) => (
@@ -63,14 +62,13 @@ export default function Profile() {
                             // image={ '/dog-icon.svg' }
                             currentDogs={dogs}
                             setDogs={setDogs}
-                            editable={true}
+                            editable={false}
                         />
                     ))}
                 </ul>
             ) : (
                 <></>
             )}
-            <PlusCard />
         </div>
     )
 }

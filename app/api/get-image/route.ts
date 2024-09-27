@@ -12,6 +12,8 @@ export const PATCH = async (request: NextRequest) => {
             unSignedUrl,
         } = await request.json();
 
+        console.log("unsigned", unSignedUrl);
+
 
 
         const command = new GetObjectCommand({

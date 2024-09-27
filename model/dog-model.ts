@@ -8,8 +8,9 @@ export type DogType = {
     rank: number,
     likes: number,
     imageUrls: string[],
+    hasJudged: Schema.Types.ObjectId[],
     completed: boolean,
-    user: Schema.Types.ObjectId, // Foreign key reference to the User model
+    user: Schema.Types.ObjectId,
     _id: Schema.Types.ObjectId,
 }
 
@@ -39,6 +40,10 @@ const dogSchema = new Schema({
     completed: {
         required: true,
         type: Boolean,
+    },
+    haveJudged:{
+        type: [String],
+        default: [],
     },
     imageUrls: {
         type: [String],

@@ -1,11 +1,15 @@
 "use server"
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/lib/mongo";
 import { auth } from "@/auth";
 import { User } from "@/model/user-model";
 import { Dog } from "@/model/dog-model";
 
-export const GET = async () => {
+export const GET = async (request: NextRequest) => {
+  const isFrontPage = request.nextUrl.searchParams.get("isFrontPage") === "true";
+  const isLeaderboard = request.nextUrl.searchParams.get("isLeaderboard") === "true";
+
+
   await dbConnect();
 
   // Authenticate the user
@@ -24,8 +28,26 @@ export const GET = async () => {
       return new NextResponse("User not found", { status: 404 });
     }
 
+    
+    
+    if (isFrontPage) {
+      const dogs = await Dog.find({
+        "imageUrls.0": { "$exists": true }, 
+        "completed": true, 
+        "haveJudged": {"$nin": [user._id]},
+      }).limit(3);
+
+      return NextResponse.json(dogs, { status: 200 });
+    }
+
+    if (isLeaderboard){
+      const dogs = await Dog.find().sort({rank:1}).limit(10);
+
+      return NextResponse.json(dogs, { status: 200 });
+    }
+
     // Find all dogs associated with the user
-    const dogs = await Dog.find({ user: user._id });
+    const dogs = await Dog.find({ user: user._id});
 
     return NextResponse.json(dogs, { status: 200 });
   } catch (error) {
