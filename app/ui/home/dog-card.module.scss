@@ -1,19 +1,23 @@
-
-
-
 .card {
     display: flex;
 
     // background-color: transparent;
     // backdrop-filter: none;
     padding: 2.5vh;
+    padding: 2.5dvh;
 
 
+    // .placeholder {
+    //     position: absolute;
+    //     left: 0;
+    //     top: 0;
+    // }
 
     img {
         position: relative;
         height: 18vh;
         height: 18dvh;
+        // aspect-ratio: 3/4;
         min-width: 13.5vh;
         min-width: 13.5dvh;
 
@@ -21,8 +25,9 @@
         border: 1px solid #ffffff2e;
         box-shadow: 0 0 6px #ffffff;
 
-        flex-grow: 1;        
+        // flex-grow: 1;
 
+        margin-right: auto;
     }
 
     .info {
@@ -36,14 +41,58 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
-            
+
+
             .name_age {
                 font-weight: 500;
                 font-size: 1.5rem;
-    
-                span {
+
+                padding-right: 5%;
+
+                .name, .name_short {
+                    overflow-wrap: anywhere;
+                }
+
+                .name_short {
+                    display: none;
+                }
+
+                .age {
                     font-weight: 400;
+                }
+
+
+            }
+
+            input {
+                display: none;
+
+                &:checked {
+                    display: none;
+
+                    &+.name_age {
+
+                        .age, .name {
+                            display: none;
+                        }
+
+                        .name_short {
+                            display: block;
+                        }
+                    }
+
+                    &+.name_age+.likes_options {
+                        .likes {
+                            display: none;
+                        }
+
+                        .options {
+                            .options_menu {
+                                display: flex;
+                            }
+                        }
+                    }
+
                 }
             }
 
@@ -53,6 +102,9 @@
 
                 font-size: 1rem;
 
+                .likes {
+                    // overflow-wrap:break-word;
+                }
                 .options {
                     display: flex;
                     align-items: center;
@@ -60,11 +112,11 @@
                     .options_menu {
                         display: none;
 
-                        .option { 
+                        .option {
                             background: #ffffff40;
                             // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-                            backdrop-filter: blur( 4px );
-                            -webkit-backdrop-filter: blur( 4px );
+                            backdrop-filter: blur(4px);
+                            -webkit-backdrop-filter: blur(4px);
                             border-radius: 5px;
                             border: 1px solid #ffffff2e;
 
@@ -79,7 +131,7 @@
                             }
 
                             &:visited {
-                                color:#fff;
+                                color: #fff;
                                 text-decoration: none;
                             }
 
@@ -91,7 +143,7 @@
                             }
                         }
                     }
-                    
+
                     label {
                         display: flex;
                         justify-content: center;
@@ -99,31 +151,22 @@
                         height: fit-content;
 
                         margin-left: 6%;
+
                         span {
                             font-weight: 700;
                             writing-mode: vertical-lr;
                             text-orientation: mixed;
                         }
                     }
-                    
+
 
                 }
 
-                input {
-                    display: none;  
-                    
-                    &:checked + .likes {
-                        display: none;
 
-                        &+ .options .options_menu {
-                            display: flex;
-                        }
-                    }
-                }
 
-                
-                
-                
+
+
+
             }
 
         }
@@ -132,14 +175,14 @@
         .bottom_section {
             margin-left: 1%;
 
-            .info_label{
+            .info_label {
                 font-weight: 500;
             }
-    
+
             .rank {
                 font-size: .9rem;
             }
         }
     }
-    
+
 }

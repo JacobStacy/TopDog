@@ -11,7 +11,6 @@ export default function DogCard({
     id,
     name,
     age,
-    breed,
     bio,
     likes,
     rank,
@@ -23,7 +22,6 @@ export default function DogCard({
     id: Schema.Types.ObjectId,
     name: string;
     age: number;
-    breed: string;
     bio: string;
     likes: number;
     rank: number;
@@ -99,41 +97,42 @@ export default function DogCard({
         }
     }
 
-    const addOrdinalSuffix = (rank:number) => {
+    const addOrdinalSuffix = (rank: number) => {
         const lastDigit = rank % 10;
         const lastTwoDigits = rank % 100;
-    
+
         if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
             return rank + "th";
         }
-    
+
         if (lastDigit === 1) return rank + "st";
         if (lastDigit === 2) return rank + "nd";
         if (lastDigit === 3) return rank + "rd";
-    
+
         return rank + "th";
     };
 
 
     return (
         <ProfileCard className={styles.card}>
-            <div className={styles.image_holder}>
                 <Image
                     src={signedImage}
                     alt={`picture of ${name}`}
                     width={102}
                     height={136}
                 />
-            </div>
+
             <div className={styles.info}>
                 <div className={styles.top_line}>
+                    <input id={`${id}`} type="checkbox" />
                     <div className={styles.name_age}>
-                        {name}, <span>{age}</span>
+                        <span className={styles.name}>{name}, </span> 
+                         <span className={styles.name_short}>{name.substring(0,3)}...</span> 
+                        <span className={styles.age}>{age}</span>
                     </div>
 
                     <div className={styles.likes_options}>
 
-                        <input id={`${id}`} type="checkbox" />
                         <div className={styles.likes}>♥ {likes}</div>
                         {editable ?
                             <div className={styles.options}>
@@ -170,10 +169,6 @@ export default function DogCard({
                     <div className={styles.desc}>
                         <span className={styles.info_label}>Bio: </span>
                         {bio}
-                    </div>
-                    <div className={styles.breed}>
-                        <span className={styles.info_label}>Breed: </span>
-                        {breed}
                     </div>
                 </div>
 

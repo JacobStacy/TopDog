@@ -5,7 +5,6 @@ import mongoose, { Schema } from "mongoose";
 export async function createDog(dog: { 
     name: string,
     age: number,
-    breed: string,
     bio: string,
     rank: number,
     likes: number,
@@ -31,7 +30,6 @@ export async function updateDog(
     updates: { 
         name?: string;
         age?: number;
-        breed?: string;
         bio?: string;
         rank?: number;
         likes?: number;
@@ -182,9 +180,6 @@ export async function interact(
 
         const change = swipe == "right" ? 1 : -1;
 
-        console.log("dogId: ", dogId)
-        console.log("userId: ", userId)
-        console.log("swipe: ", swipe)
         
         const updatedDog = await Dog.findByIdAndUpdate(
             dogId,

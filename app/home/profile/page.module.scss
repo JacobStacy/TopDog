@@ -1,0 +1,6 @@
+.list {
+    max-height: calc(100vh - 7vh - 10vh - 1vh);
+    max-height: calc(100dvh - 7dvh - 10dvh - 1dvh);
+
+    overflow-y: scroll;
+}

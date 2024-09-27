@@ -6,7 +6,7 @@
     height: 70vh;
     height: 70dvh;
     
-    max-width: 500px;
+    max-width: min(500px, 96%);
     aspect-ratio: 3/4;
 
     margin: 0 auto;
@@ -33,7 +33,7 @@
     height: 70vh;
     height: 70dvh;
     
-    max-width: 500px;
+    max-width: min(500px, 96%);
     aspect-ratio: 3/4;
 
     margin: 0 auto;

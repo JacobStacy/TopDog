@@ -11,7 +11,8 @@ export const signInSchema = object({
 
 export const addDogSchema = object({
   name: string({ required_error: "Name is required" })
-    .min(1, "Name is required"),
+    .min(1, "Name is required")
+    .max(16, "Name cannot exceed 16 characters"),
 
   age: number({ required_error: "Age is required" })
     .min(0, "Age must be a positive number"),
@@ -19,7 +20,4 @@ export const addDogSchema = object({
   bio: string({ required_error: "Bio is required" })
     .min(1, "Bio is required")
     .max(120, "Bio cannot exceed 120 characters"),
-
-  breed: string({ required_error: "Breed is required" })
-    .min(1, "Breed is required"),
 });

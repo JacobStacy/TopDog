@@ -1,7 +1,7 @@
 "use client"
 // import ProfileCard from "@/app/ui/home/profile/profile-card"
 import PlusCard from "@/app/ui/home/profile/plus-card"
-// import styles from "./page.module.scss"
+import s from "./page.module.scss"
 import DogCard from "@/app/ui/home/dog-card"
 import { useEffect, useState } from "react";
 import { DogType } from "@/model/dog-model";
@@ -44,14 +44,13 @@ export default function Profile() {
         <div>
             {error}
             {dogs.length > 0 ? (
-                <ul>
+                <ul className={s.list}>
                     {dogs.map((dog, index) => (
                         <DogCard 
                             key={index}
                             id={dog._id}
                             name={dog.name} 
-                            age={dog.age} 
-                            breed={dog.breed} 
+                            age={dog.age}  
                             bio={dog.bio} 
                             likes={dog.likes} 
                             rank={dog.rank}

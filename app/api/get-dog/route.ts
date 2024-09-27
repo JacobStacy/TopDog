@@ -30,14 +30,12 @@ export const GET = async (request: NextRequest) => {
       email: session?.user?.email,
     });
 
-    console.log("user", user);
 
     if (!user) {
       return new NextResponse("User not found", { status: 404 });
     }
 
     if (getBlank) {
-        console.log("user id", user._id)
         const blankDog = await Dog.findOne({ user: user._id, completed: false});
 
         if (blankDog) {

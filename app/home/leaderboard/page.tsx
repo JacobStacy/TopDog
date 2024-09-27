@@ -43,14 +43,13 @@ export default function Leaderboard(){
             {error}
             <div className={`${s.header} ${montserrat.className}`}> This Weeks Top Dogs</div>
             {dogs.length > 0 ? (
-                <ul>
+                <ul className={s.list}>
                     {dogs.map((dog, index) => (
                         <DogCard 
                             key={index}
                             id={dog._id}
                             name={dog.name} 
                             age={dog.age} 
-                            breed={dog.breed} 
                             bio={dog.bio} 
                             likes={dog.likes} 
                             rank={dog.rank}

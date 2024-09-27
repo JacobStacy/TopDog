@@ -50,8 +50,8 @@
 
         .info {
 
-            height: 15vh;
-            height: 15dvh;
+            min-height: 15vh;
+            min-height: 15dvh;
             
             background-image: 
             linear-gradient(
@@ -64,13 +64,14 @@
 
             color: #fff;
 
-            padding-left: 20px;
+            padding: 0 20px;
 
             .name_line {
                 font-size: 1.5rem;
                 font-weight: 500;
 
                 // margin-left: 20px;
+                overflow-wrap: anywhere;
 
                 .age {
                     font-weight: 200;
@@ -78,7 +79,7 @@
             }
             
             .desc_line {
-                font-size: 1rem;
+                font-size: .85rem;
                 font-weight: 200;
             }
         }

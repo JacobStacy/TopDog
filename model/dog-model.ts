@@ -3,7 +3,6 @@ import mongoose, {Schema} from "mongoose";
 export type DogType = {
     name: string,
     age: number,
-    breed: string,
     bio: string,
     rank: number,
     likes: number,
@@ -16,16 +15,10 @@ export type DogType = {
 
 const dogSchema = new Schema({
     name: {
-        required: true,
         type: String,
     },
     age: {
-        required: true,
         type: Number,
-    },
-    breed: {
-        required: true,
-        type: String,
     },
     bio: {
         type: String,

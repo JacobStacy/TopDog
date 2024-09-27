@@ -2,11 +2,17 @@
 
 .header {
     margin: 5vh auto;
+    margin: 5dvh auto;
 
     font-size: 1.5rem;
     width: fit-content;
 
     color: #fff;
+}
 
-    // margin-bottom: 5vh;
+.list {
+    max-height: calc(100vh - 7vh - 10vh - 10vh - 1.5rem - 1vh);
+    max-height: calc(100dvh - 7dvh - 10dvh - 10dvh - 1.5rem - 1dvh);
+
+    overflow-y: scroll;
 }

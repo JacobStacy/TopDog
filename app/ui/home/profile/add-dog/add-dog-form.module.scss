@@ -4,8 +4,8 @@
 
     background: #ffffff40;
     // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid #ffffff2e;
 
@@ -18,37 +18,136 @@
         div {
             display: flex;
             justify-content: space-between;
+            flex-direction: column;
+
+            .error_msg {
+                color: #ff6363;
+                text-align: center;  
+                
+                
+            }
+            &.bio {
+
+                label {
+                    text-align: center;
+                    // margin-bottom: 1.5vh;
+                }
+
+
+
+                .bio_holder {
+                    position: relative;
+                    margin-bottom: 3vh;
+
+                    .charCount {
+                        position: absolute;
+                        bottom: 5%;
+                        right: 3%;
+
+                        &.tooBig {
+                            color: #ff4848;
+                        }
+                    }
+
+                    .text_display {
+
+                        display: block;
+
+                        padding: .5rem 1rem;
+                        min-height: 5rem;
+                        margin-left: 0;
+                        border-radius: 1rem;
+                        resize: none;
+
+
+                        // padding-left: 1rem;
+                        // padding-right: 1rem;
+
+                        padding-left: 2%;
+                        padding-right: 2%;
+                        margin-bottom: 0;
+                        padding-bottom: 2rem;
+
+                        margin-top: 1px;
+
+                        // border: 1px solid #00000000;
+
+                        outline: none;
+                        // max-width: 100%;
+
+                        
+                        overflow: hidden;
+                        
+                        overflow-wrap: anywhere;
+
+                    }
+                    textarea {
+                        display: block;
+                        // height: fit-content;
+                        height: 100%;
+                        margin-left: 0;
+                        border-radius: 1rem;
+                        resize: none;
+                        
+
+                        width: 100%;
+
+                        padding-left: 2%;
+                        padding-right: 2%;
+                        margin-bottom: 0;
+                        padding-bottom: 2rem;
+
+                        overflow: visible;
+
+                        position: absolute;
+
+                        color: #00000000;
+                        caret-color: #fff;
+
+                        overflow: hidden;
+                    }
+                }
+            }
 
             label {
                 text-align: left;
                 font-weight: 500;
                 font-size: 1.5rem;
+
+                text-align: center;
+                margin-bottom: 1vh;
             }
-        
-            input {
+
+            input,
+            textarea {
                 background-color: #00000000;
-        
+
                 border: solid 1px #fff;
                 border-radius: 100vw;
                 border-radius: 100dvw;
-        
+
                 margin-bottom: 3vh;
                 padding: .5rem 1rem;
-        
+
                 font-size: 1rem;
-        
+
                 color: #fff;
 
                 flex-grow: 1;
 
-                margin-left: 6%;
-        
+                // margin-left: 6%;
+
                 &:focus {
                     outline: none;
                 }
+
+
             }
+
+
         }
     }
+
     button {
         color: #fff;
         font-size: 1.2rem;

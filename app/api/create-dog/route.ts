@@ -8,11 +8,10 @@ import { Dog } from "@/model/dog-model";
 
 export const POST = async(request : NextRequest) => {
 
-    
+    console.log("==========req===========",request)
     const {
         name,
         age,
-        breed,
         bio,
         rank,
         likes,
@@ -44,13 +43,11 @@ export const POST = async(request : NextRequest) => {
             const newDog = {
                 name,
                 age,
-                breed,
                 bio,
                 rank,
                 likes,
                 imageUrls : [],
-                hasJudged : [user], // [prod] set back to this when not testing
-                // haveJudged : [],
+                haveJudged : [],
                 completed,
                 user
             }
@@ -95,7 +92,6 @@ export const PATCH = async(request : NextRequest) => {
         dogId,
         name,
         age,
-        breed,
         bio,
         rank,
         likes,
@@ -104,7 +100,6 @@ export const PATCH = async(request : NextRequest) => {
     const updatedDog = {
         name,
         age,
-        breed,
         bio,
         rank,
         likes,

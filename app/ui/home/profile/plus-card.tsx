@@ -16,7 +16,6 @@ export default function PlusCard() {
                 body: JSON.stringify({
                     name: " ",
                     age: " ",
-                    breed: " ",
                     bio: " ",
                     rank: 0,
                     likes: 0,
