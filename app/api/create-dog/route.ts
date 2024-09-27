@@ -49,8 +49,8 @@ export const POST = async(request : NextRequest) => {
                 rank,
                 likes,
                 imageUrls : [],
-                // hasJudged : [user], // [prod] set back to this when not testing
-                haveJudged : [],
+                hasJudged : [user], // [prod] set back to this when not testing
+                // haveJudged : [],
                 completed,
                 user
             }

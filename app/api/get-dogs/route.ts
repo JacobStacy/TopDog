@@ -41,7 +41,10 @@ export const GET = async (request: NextRequest) => {
     }
 
     if (isLeaderboard){
-      const dogs = await Dog.find().sort({rank:1}).limit(10);
+      const dogs = await Dog.find({
+        "imageUrls.0": { "$exists": true }, 
+        "completed": true, }
+      ).sort({likes: -1, rank:1}).limit(10);
 
       return NextResponse.json(dogs, { status: 200 });
     }
