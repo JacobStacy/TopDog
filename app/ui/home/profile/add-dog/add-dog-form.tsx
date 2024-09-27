@@ -144,7 +144,7 @@ export default function AddDogForm() {
                             type="number"
                             name="age"
                             id="age"
-                            defaultValue={dogData?.age || 0}
+                            defaultValue={dogData?.age}
                         />
                     </div>
                     <div>

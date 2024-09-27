@@ -14,10 +14,20 @@
     justify-content: center;
     align-items: center;
 
-    font-size: 1.3rem;
-    font-weight: 600;
 
-    color: #fff;
+
+    button {
+        font-size: 1.3rem;
+        font-weight: 600;
+
+        color: #fff;
+        background: none;
+        border: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 
     a {
         color: #fff;
@@ -32,7 +42,7 @@
 
 }
 
-.home_footer{
+.home_footer {
     // border-top: solid .5px #fff;
 
     height: 10vh;
@@ -48,8 +58,8 @@
     color: #fff;
 
     background: #ffffff40;
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 
     width: 100%;
 
@@ -58,9 +68,9 @@
         justify-content: center;
         align-items: center;
         gap: 4rem;
-        
+
         list-style-type: none;
-        
+
         width: 100%;
         height: 100%;
 
@@ -73,7 +83,7 @@
                 border: none;
 
                 &:hover {
-                    cursor:pointer;
+                    cursor: pointer;
                 }
             }
 
@@ -84,16 +94,18 @@
                 width: 10vh;
                 width: 10dvh;
 
-                path{
+                path {
                     stroke: #fff;
                 }
+
                 // fill: #fff;
             }
 
             .dog {
                 width: 6.25vh;
                 width: 6.25dvh;
-                path{
+
+                path {
                     stroke-width: 25px;
 
                 }
@@ -116,6 +128,7 @@
                     stroke-width: .5px;
                     fill: #fff;
                 }
+
                 width: 6.25vh;
                 width: 6.25dvh;
 

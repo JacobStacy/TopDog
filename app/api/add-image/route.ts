@@ -79,7 +79,8 @@ async function uploadImageToS3(imageFile: File): Promise<string> {
             width: 405,
             height: 540,
             fit: sharp.fit.cover,
-            position: sharp.strategy.attention,
+            // position: sharp.strategy.attention,
+            position: sharp.strategy.entropy,
             withoutEnlargement: true
         })
         .toBuffer();

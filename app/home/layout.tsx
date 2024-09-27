@@ -19,7 +19,9 @@ export default function HomeLayout( {
                 ${styles.home_header}
                 ${montserrat.className}
             `}>
-                <Link href="/">TopDog</Link>
+                <form action={logout}>
+                    <button type="submit">TopDog</button>
+                </form>
                 
             </header>
             <main className={styles.main}>

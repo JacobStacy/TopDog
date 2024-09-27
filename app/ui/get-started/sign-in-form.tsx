@@ -42,7 +42,8 @@ export default function SignInForm() {
                     </button> 
                 </div>
             </form>
-            <Link href="/get-started/email-login">
+            {/* Temp disable until I set up email verification or magic links */}
+            {/* <Link href="/get-started/email-login">
                 <button
                     className={styles.sign_in_button} 
                     name="email"
@@ -55,7 +56,7 @@ export default function SignInForm() {
                         height="32"
                     />
                 </button>
-            </Link>
+            </Link> */}
         </>
     );
 }

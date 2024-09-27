@@ -1,12 +1,12 @@
 'use client'
-import { forwardRef } from "react";
+// import { forwardRef } from "react";
 import styles from "./iaction-btns.module.scss";
 import CheckIcon from "@/public/check-icon.svg";
 import CrossIcon from "@/public/cross-icon.svg";
-import StarIcon from "@/public/star-icon.svg";
+// import StarIcon from "@/public/star-icon.svg";
 import { IActionBtnsProps } from "@/types";
 
-const IActionButtons = forwardRef(({ triggerSwipeLeft, triggerSwipeRight }: IActionBtnsProps) => {
+const IActionButtons = ({ triggerSwipeLeft, triggerSwipeRight }: IActionBtnsProps) => {
     const handleSwipe = (action: 'left' | 'right') => {
         if (action === 'left') {
             triggerSwipeLeft();
@@ -26,11 +26,12 @@ const IActionButtons = forwardRef(({ triggerSwipeLeft, triggerSwipeRight }: IAct
                         <CrossIcon className={styles.cross} />
                     </button>
                 </li>
-                <li>
+                {/* temp disable until implemented */}
+                {/* <li>
                     <button aria-label="Mega Like">
                         <StarIcon className={styles.star} />
                     </button>
-                </li>
+                </li> */}
                 <li>
                     <button 
                         onClick={() => handleSwipe("right")} 
@@ -42,7 +43,7 @@ const IActionButtons = forwardRef(({ triggerSwipeLeft, triggerSwipeRight }: IAct
             </ul>
         </div>
     );
-});
+};
 
 // Set the display name to avoid the ESLint warning
 IActionButtons.displayName = 'IActionButtons';
