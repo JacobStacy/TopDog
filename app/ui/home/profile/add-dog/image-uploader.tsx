@@ -228,7 +228,7 @@ export default function ImageUploader() {
                     type="file"
                     name="images"
                     id="images"
-                    accept=".jpg, .jpeg, .png, .bmp, .webp, .tiff"
+                    accept=".jpg, .jpeg, .png, .bmp, .webp, .tiff, .heic, .avif"
                 />
             </div>
         </div>
