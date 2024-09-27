@@ -35,7 +35,7 @@ export const GET = async (request: NextRequest) => {
         "imageUrls.0": { "$exists": true }, 
         "completed": true, 
         "haveJudged": {"$nin": [user._id]},
-      }).limit(3);
+      }).limit(5);
 
       return NextResponse.json(dogs, { status: 200 });
     }
