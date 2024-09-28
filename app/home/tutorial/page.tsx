@@ -24,7 +24,7 @@ export default async function Tutorial() {
     }
 
     if (user.doneTut) {
-        redirect("/home");
+        // redirect("/home");
     }
 
     return (
