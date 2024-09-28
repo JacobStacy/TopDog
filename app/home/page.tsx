@@ -25,12 +25,30 @@ export default function Home() {
     const cardRef = useRef<PhotoCardHandle[]>([]);
     const activeIndex = cards.length - 1;
 
-
     useEffect(() => {
         if (session?.status == "unauthenticated") {
             redirect("/get-started"); // Redirect if session exists
         }
     }, [session]);
+
+    useEffect(() => {
+        const setTut = async () => {
+            try {
+                const response = await fetch("/api/update-tut", {
+                    method: "POST",
+                });
+    
+                if (!response.ok) {
+                    throw new Error("Failed to update tutorial status.");
+                }
+    
+                
+            } catch (err) {
+                throw err;
+            }
+        }
+        setTut();
+    }, [])
 
     const getDogs = async () => {
         try {
@@ -70,7 +88,13 @@ export default function Home() {
     
                 return () => clearTimeout(timer);
             } else {
-                getDogs();
+                // Delay to make sure the last dog don't get displayed again
+                console.log("Pulling again in .5s")
+                const timer = setTimeout(() => {
+                    getDogs();
+                }, 500);
+    
+                return () => clearTimeout(timer);
             }
         }
     }, [cards]);

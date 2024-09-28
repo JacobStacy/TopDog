@@ -1,5 +1,7 @@
 import { Dog } from "@/model/dog-model";
 import mongoose, { Schema } from "mongoose";
+import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import sharp from "sharp";
 
 
 export async function createDog(dog: { 
@@ -75,7 +77,7 @@ export async function updateDog(
 export async function addImage(
     dogId: mongoose.Types.ObjectId,
     userId: mongoose.Types.ObjectId,
-    imageUrl: string,
+    imageFile: File,
 ) {
     try {
         // Find the dog by ID to check if it belongs to the user
@@ -89,18 +91,19 @@ export async function addImage(
             throw new Error("You do not have permission to update this dog");
         }
 
+        const imageUrl = await uploadImageToS3(imageFile);
         
-        const updatedDog = await Dog.findByIdAndUpdate(
+        await Dog.findByIdAndUpdate(
             dogId,
             { $push: { imageUrls: imageUrl } },  // Use $push to add new image URL
             { new: true, runValidators: true } 
         );
 
-        if (!updatedDog) {
+        if (!imageUrl) {
             throw new Error("Dog not found or failed to update");
         }
 
-        return updatedDog;
+        return imageUrl;
     } catch (error) {
         if (error instanceof Error) {
             throw error;
@@ -110,20 +113,10 @@ export async function addImage(
 
 export async function deleteImage(
     dogId: mongoose.Types.ObjectId,
-    userId: mongoose.Types.ObjectId,
     imageUrl: string,
 ) {
     try {
-        // Find the dog by ID to check if it belongs to the user
-        const dog = await Dog.findById(dogId);
-        if (!dog) {
-            throw new Error("Dog not found");
-        }
-
-        // Check if the dog belongs to the user
-        if (!dog.user.equals(userId)) {
-            throw new Error("You do not have permission to update this dog");
-        }
+        
 
         // Remove the image URL from the imageUrls array
         const updatedDog = await Dog.findByIdAndUpdate(
@@ -131,6 +124,10 @@ export async function deleteImage(
             { $pull: { imageUrls: imageUrl } },
             { new: true, runValidators: true } 
         );
+
+
+            // Delete the image from S3
+            await deleteImageFromS3(imageUrl);
 
         if (!updatedDog) {
             throw new Error("Dog not found or failed to update");
@@ -144,9 +141,72 @@ export async function deleteImage(
     }
 }
 
+async function uploadImageToS3(imageFile: File): Promise<string> {
+    const s3 = new S3Client({
+        // Configure your S3 credentials and region
+        credentials: {
+            accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
+        },
+        region: process.env.AWS_REGION as string,
+    });
+
+    const buffer = await imageFile.arrayBuffer()
+
+    const webpBuffer = await sharp(buffer)
+        .webp({ quality: 50 })
+        .resize({
+            width: 405,
+            height: 540,
+            fit: sharp.fit.cover,
+            // position: sharp.strategy.attention,
+            position: sharp.strategy.entropy,
+            withoutEnlargement: true
+        })
+        .toBuffer();
+
+    const outFileName = `${Date.now()}-${imageFile.name.replace(/\.[^.]+$/, '.webp')}`; // Generate a unique filename
+    // console.log(outFileName)
+    const uploadParams = {
+        Bucket: process.env.S3_BUCKET_NAME as string, // Replace with your S3 bucket name
+        Key: outFileName,
+        Body: webpBuffer,
+    };
+
+
+    try {
+        await s3.send(new PutObjectCommand(uploadParams));
+        return outFileName; // Construct the image URL
+    } catch (error) {
+        throw error; // Rethrow the error for proper handling
+    }
+}
+
+async function deleteImageFromS3(imageUrl: string): Promise<void> {
+    const s3 = new S3Client({
+        credentials: {
+            accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
+        },
+        region: process.env.AWS_REGION as string,
+    });
+
+    const imageKey = imageUrl; // Assuming imageUrl is the S3 key (or extract the key if URL contains bucket name)
+
+    const deleteParams = {
+        Bucket: process.env.S3_BUCKET_NAME as string, // Replace with your S3 bucket name
+        Key: imageKey,
+    };
+
+    try {
+        await s3.send(new DeleteObjectCommand(deleteParams));
+    } catch (error) {
+        throw error; // Rethrow the error for proper handling
+    }
+}
+
 
 export async function resetHaveJudged() {
-
     await Dog.updateMany(
         {
             $set: {haveJudged: []},
@@ -204,14 +264,9 @@ export async function interact(
     }
 }
 
-export async function deleteDog(dogId: Schema.Types.ObjectId, userId: Schema.Types.ObjectId) {
+export async function deleteDog(dogId: mongoose.Types.ObjectId, userId: mongoose.Types.ObjectId) {
     console.log("deleteDog");
     
-    // Check if the dogId is a valid ObjectId
-    // if (!Schema.Types.ObjectId.isValid(dogId)) {
-    //     throw new Error("Invalid Dog ID");
-    // }
-
     try {
         // Find the dog by ID to check if it belongs to the user
         const dog = await Dog.findById(dogId);
@@ -222,6 +277,10 @@ export async function deleteDog(dogId: Schema.Types.ObjectId, userId: Schema.Typ
         // Check if the dog belongs to the user
         if (!dog.user.equals(userId)) {
             throw new Error("You do not have permission to delete this dog");
+        }
+
+        for (let imageUrl of dog.imageUrls) {
+            await deleteImage(dogId, imageUrl);
         }
 
         // Delete the dog

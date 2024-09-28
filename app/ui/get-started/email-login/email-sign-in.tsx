@@ -20,7 +20,7 @@ export default function EmailSignIn() {
             if (!!response.error) {
                 setError(response.error.message);
             } else {
-                router.push("/home");
+                router.push("/home/tutorial");
             }
             
         } catch(error) {

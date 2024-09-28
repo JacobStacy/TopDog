@@ -42,9 +42,9 @@ export const PATCH = async (request: NextRequest) => {
             return new NextResponse("User not found", { status: 404 });
         }
 
-        if (dogId && (swipe == "right" || swipe == "left")){
+        if (dogId && (swipe == "right" || swipe == "left")) {
             const response = await interact(dogId._id, user._id, swipe);
-            return new NextResponse(response, {status: 202})
+            return new NextResponse(response, {status: 202});
         } else {
             return new NextResponse("Dog not found or swipe is invalid", { status: 404 });
         }

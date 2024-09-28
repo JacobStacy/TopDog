@@ -19,7 +19,7 @@ export default async function EmailLogin() {
         });
         // Check if the user exists
         if (user) {
-            redirect("/home")
+            redirect("/tutorial")
         }
     }
 

@@ -4,6 +4,7 @@ export type UserType = {
     name: string,
     password: string,
     email: string,
+    doneTut: string,
 }
 
 const userSchema = new Schema({
@@ -12,12 +13,16 @@ const userSchema = new Schema({
         type: String,
     },
     password: {
-        required: true,
+        required: false,
         type: String,
     },
     email: {
         required: true,
         type: String,
+    },
+    doneTut: {
+        type: Boolean,
+        default: false,
     },
 });
 

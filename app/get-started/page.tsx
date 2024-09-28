@@ -19,7 +19,7 @@ export default async function GetStarted() {
         });
         // Check if the user exists
         if (user) {
-            redirect("/home")
+            redirect("/home/tutorial")
         }
     }
     

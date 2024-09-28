@@ -5,7 +5,7 @@ import {signIn, signOut} from "@/auth"
 export async function socialLogin(formData: FormData) {
     const action = formData.get("action")?.toString() ?? "";
     if (action) {
-        await signIn(action, {redirectTo: "/home"});
+        await signIn(action, {redirectTo: "/home/tutorial"});
     } else {
         throw new Error("Invalid action");
     }
