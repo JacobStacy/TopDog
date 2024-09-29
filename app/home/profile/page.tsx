@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { DogType } from "@/model/dog-model";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { montserrat } from "@/app/ui/fonts";
 
 export default function Profile() {
     const [dogs, setDogs] = useState<DogType[]>([]);
@@ -41,7 +42,7 @@ export default function Profile() {
     }, []);
 
     return (
-        <div className={s.list}>
+        <div className={`${s.list} ${montserrat.className}`}>
             {error}
             {dogs.length > 0 ? (
                 <ul>
@@ -67,7 +68,7 @@ export default function Profile() {
                     ))}
                 </ul>
             ) : (
-                <></>
+                <div className={s.add_your_dog}>Add your dog!</div>
             )}
             <PlusCard />
         </div>
