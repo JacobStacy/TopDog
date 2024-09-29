@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 
 
-export async function PATCH(req:Request) {
+export async function GET(req:Request) {
     try {
         const authHeader = req.headers.get("Authorization");
 
