@@ -2,6 +2,8 @@ import { Dog } from "@/model/dog-model";
 import mongoose, { Schema } from "mongoose";
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import sharp from "sharp";
+import { NextResponse } from "next/server";
+import { dbConnect } from "@/lib/mongo";
 
 
 export async function createDog(dog: { 
@@ -297,5 +299,24 @@ export async function deleteDog(dogId: mongoose.Types.ObjectId, userId: mongoose
             console.error(error); // Log the error for debugging
             throw error;  // Rethrow the error for handling at a higher level
         }
+    }
+}
+
+
+export async function weeklyReset() {
+    try {
+        dbConnect();
+
+        Dog.updateMany({
+            $set: {
+                haveJudged: [],
+                likes: 0,
+                rank: 999,
+            }
+        })
+        
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 }
