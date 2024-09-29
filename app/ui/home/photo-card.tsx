@@ -115,6 +115,7 @@ const PhotoCard = forwardRef<PhotoCardHandle, PhotoCardProps>(({ active, onDeck,
                             height={540}
                             width={405}
                             priority // Preload
+                            unoptimized
                         />
                     ))
                 ) : (
@@ -125,6 +126,7 @@ const PhotoCard = forwardRef<PhotoCardHandle, PhotoCardProps>(({ active, onDeck,
                         alt={`Picture of ${data.name}`}
                         height={540}
                         width={405}
+                        unoptimized
                     />
                 )}
                 <div className={styles.overlay}>
@@ -164,6 +166,7 @@ const PhotoCard = forwardRef<PhotoCardHandle, PhotoCardProps>(({ active, onDeck,
                             height={540}
                             width={405}
                             priority // Preload
+                            unoptimized
                         />
                     ))
                 ) : (
@@ -174,6 +177,7 @@ const PhotoCard = forwardRef<PhotoCardHandle, PhotoCardProps>(({ active, onDeck,
                         alt={`Picture of ${data.name}`}
                         height={540}
                         width={405}
+                        unoptimized
                     />
                 )}
                 <div className={styles.overlay}>

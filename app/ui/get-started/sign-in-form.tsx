@@ -23,6 +23,7 @@ export default function SignInForm() {
                             alt="Google Icon"
                             width="32"
                             height="32"
+                            unoptimized
                         />
                     </button>
 
@@ -38,6 +39,7 @@ export default function SignInForm() {
                             alt="Github Icon"
                             width="32"
                             height="32"
+                            unoptimized
                         />
                     </button> 
                 </div>
@@ -50,6 +52,7 @@ export default function SignInForm() {
                 >
                     Sign in with Email
                     <Image
+                        unoptimized
                         src="/email-icon.png"
                         alt="Email Icon"
                         width="32"

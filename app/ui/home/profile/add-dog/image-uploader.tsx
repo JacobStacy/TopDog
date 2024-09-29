@@ -204,6 +204,7 @@ export default function ImageUploader() {
                             alt={`Image ${index}`}
                             width={204}
                             height={272}
+                            unoptimized
                         />
                         <button
                             className={s.delete}
