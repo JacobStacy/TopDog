@@ -2,8 +2,6 @@ import { Dog } from "@/model/dog-model";
 import mongoose, { Schema } from "mongoose";
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import sharp from "sharp";
-import { NextResponse } from "next/server";
-import { dbConnect } from "@/lib/mongo";
 
 
 export async function createDog(dog: { 
