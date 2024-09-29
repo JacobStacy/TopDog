@@ -307,13 +307,18 @@ export async function weeklyReset() {
     try {
         dbConnect();
 
-        Dog.updateMany({
-            $set: {
-                haveJudged: [],
-                likes: 0,
-                rank: 999,
+        const result = await Dog.updateMany(
+            {}, // Empty filter to update all documents
+            {
+                $set: {
+                    haveJudged: [],
+                    likes: 0,
+                    rank: 999,
+                }
             }
-        })
+        );
+
+        console.log(`${result.modifiedCount} documents updated.`);
         
     } catch (error) {
         console.error(error);
