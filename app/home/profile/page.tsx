@@ -41,10 +41,10 @@ export default function Profile() {
     }, []);
 
     return (
-        <div>
+        <div className={s.list}>
             {error}
             {dogs.length > 0 ? (
-                <ul className={s.list}>
+                <ul>
                     {dogs.map((dog, index) => (
                         <DogCard 
                             key={index}
