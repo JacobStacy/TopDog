@@ -8,7 +8,7 @@ export async function GET(req:Request) {
     try {
         const authHeader = req.headers.get("Authorization");
 
-        console.log(authHeader, "=========================")
+        // console.log(authHeader, "=========================")
         if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
             return new NextResponse("INVAILD CRON_SECRET", {status: 403});
         }
