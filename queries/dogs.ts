@@ -311,7 +311,7 @@ export async function weeklyReset() {
             {}, // Empty filter to update all documents
             {
                 $set: {
-                    havedJudged: [],
+                    haveJudged: [],
                     likes: 0,
                     rank: 999,
                 }
