@@ -305,8 +305,6 @@ export async function deleteDog(dogId: mongoose.Types.ObjectId, userId: mongoose
 
 export async function weeklyReset() {
     try {
-        dbConnect();
-
         const result = await Dog.updateMany(
             {}, // Empty filter to update all documents
             {
