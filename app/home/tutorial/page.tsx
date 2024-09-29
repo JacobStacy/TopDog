@@ -48,7 +48,9 @@ export default async function Tutorial() {
                         </div>
                         <div className={`${s.info}`}>
                             Swipe to the right to like a dog<br />
-                            Swipe to the left to dislike a dog
+                            Swipe to the left to dislike a dog<br />
+
+                            Click the icon on the bottom right to add your dog!
                         </div>
                     </div>
                 </div>
