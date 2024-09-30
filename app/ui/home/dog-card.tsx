@@ -120,6 +120,7 @@ export default function DogCard({
                     alt={`picture of ${name}`}
                     width={102}
                     height={136}
+                    unoptimized
                 />
 
             <div className={styles.info}>

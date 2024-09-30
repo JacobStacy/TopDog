@@ -3,8 +3,6 @@ import s from "./page.module.scss"
 import DogCard from "@/app/ui/home/dog-card"
 import { useEffect, useState } from "react";
 import { DogType } from "@/model/dog-model";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import { montserrat } from "@/app/ui/fonts";
 
 
