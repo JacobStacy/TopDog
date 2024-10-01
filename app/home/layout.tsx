@@ -15,6 +15,7 @@ export default function HomeLayout( {
   }>) {
     return (
         <>
+            
             <header className={`
                 ${styles.home_header}
                 ${montserrat.className}
