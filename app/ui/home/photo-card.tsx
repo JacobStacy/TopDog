@@ -133,11 +133,11 @@ const PhotoCard = forwardRef<PhotoCardHandle, PhotoCardProps>(({ active, onDeck,
                     <div className={styles.photo_count}>
                         {signedUrls.map((url, index) => (
                             <div 
+                                key={index}
                                 className={`
                                     ${styles.bar} 
                                     ${index === selectedImage ? styles.selected : 'cock'}
                                 `}
-                                key={index}
                             />
                         ))}
                     </div>
@@ -170,7 +170,7 @@ const PhotoCard = forwardRef<PhotoCardHandle, PhotoCardProps>(({ active, onDeck,
                 {signedUrls.length ? (
                     signedUrls.map((image, index) => (
                         <Image
-                            key={index} // corrected the key prop
+                            key={index}
                             className={`${styles.picture} ${index === selectedImage ? '' : styles.hidden}`} // Apply hidden class to non-selected images
                             src={image}
                             alt={`Picture of ${data.name}`}
