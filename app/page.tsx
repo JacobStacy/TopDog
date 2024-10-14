@@ -8,7 +8,7 @@ export default function Welcome() {
         <main>
             <div className={`${styles.welcome} ${montserrat.className}`}>
                 Welcome to TopDog
-                <Link className={styles.lets_go} href="/get-started">
+                <Link className={styles.lets_go} href="/home/tutorial">
                     <div className={styles.inner}>Let's Go!</div>
                 </Link>
             </div>

@@ -11,8 +11,8 @@ export const GET = async (request: NextRequest) => {
 
   // Authenticate the user
   const session = await auth();
-  console.log("session: ", session)
-  console.log("email:", session?.user?.email)
+  // console.log("session: ", session)
+  // console.log("email:", session?.user?.email)
   if (!session) {
     return new NextResponse("Unauthorized", { status: 401 });
   }

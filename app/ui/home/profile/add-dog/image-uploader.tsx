@@ -27,7 +27,7 @@ export default function ImageUploader() {
                         throw new Error("Failed to fetch dog");
                     }
                     const data = await response.json();
-                    console.log("dog data", data)
+                    // console.log("dog data", data)
                     setDogData(data);
                 } else {
                     const response = await fetch(`/api/get-dog?dogId=${dogIdParam}`);
@@ -35,7 +35,7 @@ export default function ImageUploader() {
                         throw new Error("Failed to fetch dog");
                     }
                     const data = await response.json();
-                    console.log("dog data", data)
+                    // console.log("dog data", data)
                     setDogData(data);
 
                 }
@@ -54,7 +54,7 @@ export default function ImageUploader() {
 
     useEffect(() => {
         const updateImages = async () => {
-            console.log("updating images");
+            // console.log("updating images");
 
             const signedUrls: string[] = [];
 
@@ -74,7 +74,7 @@ export default function ImageUploader() {
                         }
 
                         const data = await response.json();
-                        console.log(data);
+                        // console.log(data);
                         signedUrls.push(data);
                     } catch (error) {
                         console.error("Error fetching signed URL:", error);
@@ -83,7 +83,7 @@ export default function ImageUploader() {
             }
 
             setImages(signedUrls);
-            console.log(signedUrls);
+            // console.log(signedUrls);
         };
 
         updateImages();
@@ -136,7 +136,7 @@ export default function ImageUploader() {
 
 
                 // Handle successful upload (e.g., update UI, display success message)
-                console.log("Image uploaded successfully!");
+                // console.log("Image uploaded successfully!");
             } catch (error) {
                 console.error("Error uploading image:", error);
                 // Handle upload errors (e.g., display error message)
@@ -168,7 +168,7 @@ export default function ImageUploader() {
                 }
 
                 const data: { message: string } = await response.json();
-                console.log(data.message); // Log the server response
+                // console.log(data.message); // Log the server response
 
                 // Update the UI to reflect the deleted image
                 const updatedImages = images.filter(image => image !== imageToDelete);

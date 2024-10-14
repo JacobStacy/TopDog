@@ -3,11 +3,6 @@
     position: absolute;
 
     width: 100%;
-    // height: auto;
-
-    // will-change: scale, rotation, opacity;
-    
-
 
     max-width: 500px;
 
@@ -21,8 +16,6 @@
     &.hidden {
         display: none;
     }
-    
-
 
     .picture {
         width: 100%;

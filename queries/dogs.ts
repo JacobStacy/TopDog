@@ -16,7 +16,7 @@ export async function createDog(dog: {
 }){
 
     try{
-        console.log("dogs.ts dog", dog)
+        // console.log("dogs.ts dog", dog)
         await Dog.create(dog);
 
     } catch(error) {
@@ -225,7 +225,7 @@ const updateDogRanks = async () => {
             await dogs[i].save(); // Save the dog with the updated rank
         }
 
-        console.log('Ranks updated successfully!');
+        // console.log('Ranks updated successfully!');
     } catch (error) {
         console.error('Error updating ranks:', error);
     }
@@ -251,7 +251,7 @@ export async function interact(
         );
 
         updateDogRanks();
-        console.log("updatedDog ------------ ", updatedDog);
+        // console.log("updatedDog ------------ ", updatedDog);
         if (!updatedDog) {
             throw new Error("Dog not found or failed to update");
         }
@@ -265,7 +265,7 @@ export async function interact(
 }
 
 export async function deleteDog(dogId: mongoose.Types.ObjectId, userId: mongoose.Types.ObjectId) {
-    console.log("deleteDog");
+    // console.log("deleteDog");
     
     try {
         // Find the dog by ID to check if it belongs to the user
@@ -314,7 +314,7 @@ export async function weeklyReset() {
             }
         );
 
-        console.log(`${result.modifiedCount} documents updated.`);
+        // console.log(`${result.modifiedCount} documents updated.`);
         
     } catch (error) {
         console.error(error);

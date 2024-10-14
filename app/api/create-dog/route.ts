@@ -8,7 +8,7 @@ import { Dog } from "@/model/dog-model";
 
 export const POST = async(request : NextRequest) => {
 
-    console.log("==========req===========",request)
+    // console.log("==========req===========",request)
     const {
         name,
         age,
@@ -18,7 +18,7 @@ export const POST = async(request : NextRequest) => {
         completed
     } = await request.json();
 
-    console.log("completed", completed);
+    // console.log("completed", completed);
 
     await dbConnect();
 

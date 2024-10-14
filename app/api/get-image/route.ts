@@ -6,13 +6,13 @@ import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 
 export const PATCH = async (request: NextRequest) => {
-    console.log("in get image----------------------");
+    // console.log("in get image----------------------");
     try {
         const {
             unSignedUrl,
         } = await request.json();
 
-        console.log("unsigned", unSignedUrl);
+        // console.log("unsigned", unSignedUrl);
 
 
 
@@ -21,7 +21,7 @@ export const PATCH = async (request: NextRequest) => {
             Key: unSignedUrl,
         });
 
-        console.log("before getSigned")
+        // console.log("before getSigned")
         const url = await getSignedUrl(s3, command);
 
         return NextResponse.json(url, { status: 200 })

@@ -24,7 +24,7 @@ export default function PlusCard() {
                 })
             });
             if (!response.ok) {
-                console.log(response);
+                // console.log(response);
                 throw new Error('Failed to create a blank dog entry');
             }
 

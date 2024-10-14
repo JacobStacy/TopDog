@@ -13,7 +13,7 @@ export const PATCH = async (request: NextRequest) => {
     // console.log(request.formData());
 
     const formData = await request.formData(); // Parse FormData
-    console.log(formData);
+    // console.log(formData);
 
     const swipe = formData.get("swipe")?.toString();
     const dogIdParam = formData.get("dogId");

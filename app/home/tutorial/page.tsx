@@ -1,30 +1,45 @@
-import { dbConnect } from "@/lib/mongo";
+"use client"
+// import { dbConnect } from "@/lib/mongo";
 import s from "./page.module.scss"
-import { auth } from "@/auth";
-import { User } from "@/model/user-model";
+// import { auth } from "@/auth";
+// import { User } from "@/model/user-model";
 import { redirect } from "next/navigation";
 import { montserrat } from '@/app/ui/fonts';
 import Link from "next/link";
+import { useEffect } from "react";
 
 
-export default async function Tutorial() {
-    // Replace with middleware
-    await dbConnect();
-    const session = await auth();
-    if (!session) {
-        redirect("/get-started");
-    }
+export default function Tutorial() {
 
-    const user = await User.findOne({
-        email: session?.user?.email,
-    });
 
-    if (!user) {
-        redirect("/get-started");
-    }
+    useEffect(() => {
+        const hasDone = localStorage.getItem("did-tutorial");
+        if (hasDone && hasDone == "true") {
+            redirect("/home");
+        }
+    }, []);
 
-    if (user.doneTut) {
-        redirect("/home");
+    // // Replace with middleware
+    // await dbConnect();
+    // const session = await auth();
+    // if (!session) {
+    //     redirect("/get-started");
+    // }
+
+    // const user = await User.findOne({
+    //     email: session?.user?.email,
+    // });
+
+    // if (!user) {
+    //     redirect("/get-started");
+    // }
+
+    // if (user.doneTut) {
+    //     redirect("/home");
+    // }
+
+    const handleClick = () => {
+        localStorage.setItem("did-tutorial", "true")
     }
 
     return (
@@ -58,6 +73,7 @@ export default async function Tutorial() {
             <Link 
             className={`${s.got_it} ${montserrat.className}`} 
             href={"/home"}
+            onClick={handleClick}
             >
                 <div className={s.inner}>
                     Got it!

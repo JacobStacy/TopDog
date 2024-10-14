@@ -13,7 +13,7 @@ export default async function AddDog() {
 
     await dbConnect();
     const session = await auth();
-    console.log(session?.user?.email);
+    // console.log(session?.user?.email);
     const user = await User.findOne({
         email: session?.user?.email,
     });

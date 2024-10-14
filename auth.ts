@@ -28,7 +28,7 @@ export const {
                 password: {},
             },
             async authorize(credentials): Promise<UserType | null> {
-                console.log("credentials", credentials);
+                // console.log("credentials", credentials);
                 if (credentials === null) return null;
 
                 try {

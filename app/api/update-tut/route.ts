@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function POST() {
     await dbConnect();
     const session = await auth();
-    console.log(session)
+    // console.log(session)
     if (!session) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }

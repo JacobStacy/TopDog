@@ -7,7 +7,7 @@ import styles from "./page.module.scss";
 import { DogType } from "@/model/dog-model";
 import { Schema } from "mongoose";
 import { montserrat } from '@/app/ui/fonts';
-import { redirect } from "next/navigation";
+import Link from "next/link"
 import { useSession } from "next-auth/react";
 
 interface PhotoCardHandle {
@@ -25,11 +25,11 @@ export default function Home() {
     const cardRef = useRef<PhotoCardHandle[]>([]);
     const activeIndex = cards.length - 1;
 
-    useEffect(() => {
-        if (session?.status == "unauthenticated") {
-            redirect("/get-started"); // Redirect if session exists
-        }
-    }, [session]);
+    // useEffect(() => {
+    //     if (session?.status == "unauthenticated") {
+    //         redirect("/get-started"); // Redirect if session exists
+    //     }
+    // }, [session]);
 
     useEffect(() => {
         const setTut = async () => {
@@ -47,7 +47,11 @@ export default function Home() {
                 throw err;
             }
         }
-        setTut();
+
+        if (session?.status == "authenticated") {
+            setTut();
+        }
+
     }, [])
 
     const getDogs = async () => {
@@ -59,7 +63,7 @@ export default function Home() {
             }
 
             const data = await response.json();
-            console.log("data", data);
+            // console.log("data", data);
 
             if (data.length > 0) {
                 setLimitRate(false);
@@ -79,9 +83,12 @@ export default function Home() {
 
     useEffect(() => {
         if (cards.length === 0) {
+            if (session?.status == "unauthenticated") {
+                return;
+            }
 
             if (limitRate){
-                console.log("Pulling again in 20s")
+                // console.log("Pulling again in 20s")
                 const timer = setTimeout(() => {
                     getDogs();
                 }, 20000);
@@ -89,7 +96,7 @@ export default function Home() {
                 return () => clearTimeout(timer);
             } else {
                 // Delay to make sure the last dog don't get displayed again
-                console.log("Pulling again in .5s")
+                // console.log("Pulling again in .5s")
                 const timer = setTimeout(() => {
                     getDogs();
                 }, 500);
@@ -97,26 +104,29 @@ export default function Home() {
                 return () => clearTimeout(timer);
             }
         }
-    }, [cards]);
+    }, [cards, session]);
 
     const removeCard = async (id: Schema.Types.ObjectId, action: 'right' | 'left') => {
-        console.log("in remove card ==============")
         setCards(prev => prev.filter(card => card._id !== id));
+
+        if (session?.status == "unauthenticated"){
+            return;
+        }
 
         const formData = new FormData();
         formData.append("dogId", id.toString() || "");
         formData.append("swipe", action);
 
-        console.log("formData:", formData);
+        // console.log("formData:", formData);
 
         try {
-            console.log("dogID", id);
+            // console.log("dogID", id);
             const response = await fetch('/api/interaction', {
                 method: "PATCH",
                 body: formData,
             });
             if (!response.ok) {
-                console.log(response);
+                // console.log(response);
                 throw new Error('Failed to send interaction');
             }
 
@@ -142,9 +152,22 @@ export default function Home() {
                         ))
                     ) : (
                         <div className={`${styles.empty} ${montserrat.className}`}>
-                            We're all out for now :(
-                            <br /><br />
-                            Come back later for more!!
+                            {session?.status == "unauthenticated" ? (
+                                <>
+                                    Consider creating an account, to see more dogs
+                                     and upload your own pet!
+                                    <Link href="/get-started" className={styles.create}>Create it!</Link>
+                                </>
+                                
+                            ):(
+                                <>
+                                    We're all out for now :(
+                                    <br /><br />
+                                    Come back later for more!!
+                                </>
+                            )
+                            }
+
                         </div>
                     )}
                 </AnimatePresence>
