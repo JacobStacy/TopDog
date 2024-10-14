@@ -21,6 +21,10 @@ export const {
     session: {
         strategy: "jwt",
     },
+    pages: {
+        signIn: '/get-started', // Custom sign-in page
+        error: '/get-started',    // Custom error page
+    },
     providers: [
         CredentialsProvider({
             credentials: {
