@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react"
-
+import { SessionProvider} from "next-auth/react";
 import "./globals.scss";
 
 
@@ -21,7 +21,9 @@ export default async function RootLayout({
             <Analytics />
             <body>
                 <div className="supported">
+                    <SessionProvider>
                     {children}
+                    </SessionProvider>
                 </div>
                 <div className="not_supported">
                     This screen size is not supported.

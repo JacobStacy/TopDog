@@ -26,9 +26,7 @@ export default function HomeLayout( {
                 
             </header>
             <main className={styles.main}>
-                <SessionProvider>
                     {children}
-                </SessionProvider>
             </main>
             <footer className={styles.home_footer}>
                 <nav>

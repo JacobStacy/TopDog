@@ -1,34 +1,40 @@
+"use client"
 import styles from "./page.module.scss";
 import { montserrat } from '@/app/ui/fonts';
 import SignInForm from "@/app/ui/get-started/sign-in-form";
-import { auth } from "@/auth";
-import { dbConnect } from "@/lib/mongo";
-import { User } from "@/model/user-model";
 import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 
-export default async function GetStarted() {
+export default function GetStarted() {
 
+    const session = useSession();
+    if (session?.data?.user?.email) {
+        redirect("/home"); // Redirect if session exists
+    }
 
-    // Replace with middleware
-    await dbConnect();
-    const session = await auth();
-    if (session){
-        const user = await User.findOne({
-            email: session?.user?.email,
-        });
-        // Check if the user exists
-        if (user) {
-            redirect("/home/tutorial")
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText("https://top-dog-nine.vercel.app");
+            alert('URL copied to clipboard!');
+        } catch (err) {
+            console.error('Failed to copy: ', err);
         }
     }
-    
-    
+
     return (
         <main>
             <div className={`${styles.lets_get_it_started_in_here} ${montserrat.className}`}>
                 Let's Get You Started!
-                <SignInForm/>
+                <SignInForm />
+                <div className={styles.warning}>
+                    Warning: For security reasons sign in will not work in Snapchat or Instagram browser
+                    <br/>
+                    <br/>
+                    <span onClick={handleCopy}>
+                        Click here to copy link ⎘
+                    </span>
+                </div>
             </div>
         </main>
     )
