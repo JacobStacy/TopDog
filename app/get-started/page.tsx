@@ -15,7 +15,7 @@ export default function GetStarted() {
 
     const handleCopy = async () => {
         try {
-            await navigator.clipboard.writeText("https://top-dog-nine.vercel.app");
+            await navigator.clipboard.writeText("https://top-dog-nine.vercel.app/get-started");
             alert('URL copied to clipboard!');
         } catch (err) {
             console.error('Failed to copy: ', err);
