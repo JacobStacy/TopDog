@@ -130,6 +130,11 @@ const PhotoCard = forwardRef<PhotoCardHandle, PhotoCardProps>(({ active, onDeck,
                     />
                 )}
                 <div className={styles.overlay}>
+                    <div className={styles.photo_count}>
+                        {signedUrls.map((url, index) => (
+                            <div className={`${styles.bar} ${index === selectedImage ? styles.selected : 'cock'}`}></div>
+                        ))}
+                    </div>
                     <div className={styles.btns}>
                         <button
                             aria-label="Go back an image"

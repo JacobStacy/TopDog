@@ -2,9 +2,6 @@ import { dbConnect } from "@/lib/mongo";
 import { weeklyReset } from "@/queries/dogs";
 import { NextResponse } from "next/server";
 
-
-
-
 export async function GET(req:Request) {
     await dbConnect();
     try {
