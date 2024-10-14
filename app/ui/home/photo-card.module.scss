@@ -59,7 +59,7 @@
                 border-radius: $bar-size;
 
                 background: #ffffff40;
-                // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
                 backdrop-filter: blur( 4px );
                 -webkit-backdrop-filter: blur( 4px );
                 border-radius: 1.5rem;
@@ -67,7 +67,7 @@
 
                 &.selected {
                     background: #fff;
-                    // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
                     backdrop-filter: blur( 4px );
                     -webkit-backdrop-filter: blur( 4px );
                     border-radius: 1.5rem;
