@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Top Dog - Who's the Top Dog?",
         description: "Vote for your favorite dogs and see who ranks at the top!",
-        url: "https://topdog.com",
+        url: "https://top-dog-nine.vercel.app/android-chrome-512x512.png",
         type: "website",
         images: [
             {
-                url: "https://topdog.com/og-image.jpg",
+                url: "https://top-dog-nine.vercel.app/android-chrome-512x512.png",
                 width: 1200,
                 height: 630,
                 alt: "Top Dog Logo"
