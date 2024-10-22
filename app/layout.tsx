@@ -24,6 +24,18 @@ export const metadata: Metadata = {
     }
 };
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Top Dog - Find the Best Dogs",
+    "url": "https://top-dog-nine.vercel.app",
+    "author": {
+        "@type": "Person",
+        "name": "Jacob R. Stacy"
+    },
+    "description": "Discover the top dogs around and vote for your favorites. A social platform for dog lovers."
+}
+
 export default async function RootLayout({
     children,
 }: Readonly<{
@@ -33,16 +45,10 @@ export default async function RootLayout({
         <html lang="en">
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                {/* JSON-LD for structured data */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "Organization",
-                        "name": "Top Dog",
-                        "url": "https://top-dog-nine.vercel.app/",
-                        "logo": "https://top-dog-nine.vercel.app/android-chrome-512x512.png",
-                    })}
-                </script>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
             </head>
             <Analytics />
             <body>
