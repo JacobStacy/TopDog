@@ -45,7 +45,7 @@ const jsonLd = {
         "@type": "Person",
         "name": "Jacob R. Stacy"
     },
-    "description": "Explore Top Dog, where dog lovers unite to discover, rank, and vote for the best dogs. Join the community and help determine the top dog rankings.",
+    "description": "Join Top Dog, the platform for dog lovers! Find, rank, and vote for popular dogs. Share your favorites and compete for top rankings!",
 }
 
 export default async function RootLayout({
