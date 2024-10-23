@@ -28,7 +28,7 @@ export default function GetStarted() {
                 Let's Get You Started!
                 <SignInForm />
                 <div className={styles.warning}>
-                    Warning: For security reasons sign in will not work in Snapchat or Instagram browser
+                    Warning: For security reasons sign in will not work in the Snapchat or Instagram browser
                     <br/>
                     <br/>
                     <span onClick={handleCopy}>
