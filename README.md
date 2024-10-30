@@ -113,7 +113,7 @@ Here are the links to get you started with the necessary services:
 
 ---
 
-## 🔧 Technologies Used{#technologies-used}
+## Technologies Used
 - **Frontend**: 
   - Next.js
   - React
