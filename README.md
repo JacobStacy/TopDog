@@ -3,18 +3,18 @@
 Welcome to **Top Dog**, a **mobile-first** social media web app designed for pet lovers! This platform allows users to upload profiles of their pets, swipe through other profiles, and compete for likes to see who ranks as the **"Top Dog"** on the leaderboard.
 
 ## 📚 Table of Contents
-1. [✨ Features](#features)
-2. [🚀 Project Overview](#project-overview)
-3. [💻 Getting Started](#getting-started)
+1. [✨ Features](#✨-features)
+2. [🚀 Project Overview](#🚀-project-overview)
+3. [💻 Getting Started](#💻-getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Running the Development Server](#running-the-development-server)
    - [Setting Up Environment Variables](#setting-up-environment-variables)
-4. [🔧 Technologies Used](#technologies-used)
-5. [📈 Future Plans](#future-plans)
-6. [📫 Connect](#connect)
-7. [🎨 Screenshots](#screenshots)
-8. [⭐️ Acknowledgments](#acknowledgments)
+4. [🔧 Technologies Used](#🔧-technologies-used)
+5. [📈 Future Plans](#📈-future-plans)
+6. [📫 Connect](#📫-connect)
+7. [🎨 Screenshots](#🎨-screenshots)
+8. [⭐️ Acknowledgments](#⭐️-acknowledgments)
 
 ---
 
