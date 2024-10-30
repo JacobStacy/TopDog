@@ -145,5 +145,4 @@ Have questions or want to connect? Reach out to me on [LinkedIn](https://www.lin
 
 ### 📎 Check out the project here: [Top Dog](https://top-dog-nine.vercel.app)
 
-### Tags:
-#FullStackDevelopment #NextJS #MongoDB #WebDevelopment #MobileFirst #UXDesign #SoftwareEngineer
+
