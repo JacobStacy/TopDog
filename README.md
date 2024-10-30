@@ -3,22 +3,21 @@
 Welcome to **Top Dog**, a **mobile-first** social media web app designed for pet lovers! This platform allows users to upload profiles of their pets, swipe through other profiles, and compete for likes to see who ranks as the **"Top Dog"** on the leaderboard.
 
 ## 📚 Table of Contents
-1. [Features](#features)
-2. [Project Overview](#project-overview)
-3. [Getting Started](#getting-started)
+1. [✨ Features](#features)
+2. [🚀 Project Overview](#project-overview)
+3. [💻 Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Running the Development Server](#running-the-development-server)
    - [Setting Up Environment Variables](#setting-up-environment-variables)
-4. [Technologies Used](#technologies-used)
-5. [Future Plans](#future-plans)
-6. [Connect](#connect)
-7. [Screenshots](#screenshots)
-8. [Acknowledgments](#acknowledgments)
+4. [🔧 Technologies Used](#technologies-used)
+5. [📈 Future Plans](#future-plans)
+6. [📫 Connect](#connect)
+7. [🎨 Screenshots](#screenshots)
 
 ---
 
-## ✨ Features
+## ✨ Features {#features}
 - **Mobile-first Design**: Provides a seamless experience on any device.
 - **Real-time Updates**: Live leaderboards and user interactions.
 - **Upload and Swipe**: Share pet profiles and discover new furry friends.
@@ -26,18 +25,18 @@ Welcome to **Top Dog**, a **mobile-first** social media web app designed for pet
 
 ---
 
-## 🚀 Project Overview
+## 🚀 Project Overview {#project-overview}
 **Top Dog** allows users to:
 1. **Upload Profiles**: Showcase pets with adorable pictures and descriptions.
 2. **Swipe Through Profiles**: Discover and connect with other pet lovers.
 3. **Compete for Likes**: See whose pet can climb to the top of the leaderboard!
 
-### **Goal**
+### **Goal**  {#goal}
 To foster a vibrant community of pet lovers and expand the platform to allow adoption centers to post pets and match them with potential owners.
 
 ---
 
-## 💻 Getting Started
+## 💻 Getting Started  {#getting-started}
 
 Follow these steps to get your local copy of **Top Dog** up and running.
 
@@ -114,7 +113,7 @@ Here are the links to get you started with the necessary services:
 
 ---
 
-## 🔧 Technologies Used
+## 🔧 Technologies Used  {#technologies-used}
 - **Frontend**: 
   - Next.js
   - React
@@ -125,19 +124,19 @@ Here are the links to get you started with the necessary services:
 
 ---
 
-## 📈 Future Plans
+## 📈 Future Plans  {#future-plans}
 - **Adoption Center Integration**: Collaborate with local shelters to feature pets available for adoption.
 - **Enhanced Features**: Implement advanced search filters, user profiles, and messaging capabilities.
 - **Mobile App Development**: Explore the possibility of creating a companion mobile application.
 
 ---
 
-## 📫 Connect
+## 📫 Connect  {#connect}
 Have questions or want to connect? Reach out to me on [LinkedIn](https://www.linkedin.com/in/jacobrstacy) or via email at [jacobrstacy@gmail.com](mailto:jacobrstacy@gmail.com). 
 
 ---
 
-## 🎨 Screenshots
+## 🎨 Screenshots {#screenshots}
 ![Screenshot 1](https://top-dog-nine.vercel.app/Demo1.png)
 ![Screenshot 2](https://top-dog-nine.vercel.app/Demo2.png)
 ![Screenshot 3](https://top-dog-nine.vercel.app/Demo3.png)
