@@ -17,7 +17,7 @@ Welcome to **Top Dog**, a **mobile-first** social media web app designed for pet
 
 ---
 
-## ✨ Features {#features}
+## ✨ Features{#features}
 - **Mobile-first Design**: Provides a seamless experience on any device.
 - **Real-time Updates**: Live leaderboards and user interactions.
 - **Upload and Swipe**: Share pet profiles and discover new furry friends.
@@ -25,18 +25,18 @@ Welcome to **Top Dog**, a **mobile-first** social media web app designed for pet
 
 ---
 
-## 🚀 Project Overview {#project-overview}
+## 🚀 Project Overview{#project-overview}
 **Top Dog** allows users to:
 1. **Upload Profiles**: Showcase pets with adorable pictures and descriptions.
 2. **Swipe Through Profiles**: Discover and connect with other pet lovers.
 3. **Compete for Likes**: See whose pet can climb to the top of the leaderboard!
 
-### **Goal**  {#goal}
+### **Goal**
 To foster a vibrant community of pet lovers and expand the platform to allow adoption centers to post pets and match them with potential owners.
 
 ---
 
-## 💻 Getting Started  {#getting-started}
+## 💻 Getting Started{#getting-started}
 
 Follow these steps to get your local copy of **Top Dog** up and running.
 
@@ -113,7 +113,7 @@ Here are the links to get you started with the necessary services:
 
 ---
 
-## 🔧 Technologies Used  {#technologies-used}
+## 🔧 Technologies Used{#technologies-used}
 - **Frontend**: 
   - Next.js
   - React
@@ -124,19 +124,19 @@ Here are the links to get you started with the necessary services:
 
 ---
 
-## 📈 Future Plans  {#future-plans}
+## 📈 Future Plans{#future-plans}
 - **Adoption Center Integration**: Collaborate with local shelters to feature pets available for adoption.
 - **Enhanced Features**: Implement advanced search filters, user profiles, and messaging capabilities.
 - **Mobile App Development**: Explore the possibility of creating a companion mobile application.
 
 ---
 
-## 📫 Connect  {#connect}
+## 📫 Connect{#connect}
 Have questions or want to connect? Reach out to me on [LinkedIn](https://www.linkedin.com/in/jacobrstacy) or via email at [jacobrstacy@gmail.com](mailto:jacobrstacy@gmail.com). 
 
 ---
 
-## 🎨 Screenshots {#screenshots}
+## 🎨 Screenshots{#screenshots}
 ![Screenshot 1](https://top-dog-nine.vercel.app/Demo1.png)
 ![Screenshot 2](https://top-dog-nine.vercel.app/Demo2.png)
 ![Screenshot 3](https://top-dog-nine.vercel.app/Demo3.png)
