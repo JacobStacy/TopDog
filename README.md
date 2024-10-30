@@ -1,4 +1,4 @@
-# 🐾 **Top Dog: The Ultimate Pet Showcase!** 🚀
+# 🐾 **Top Dog: The Ultimate Pet Showcase!** 🐾
 
 Welcome to **Top Dog**, a **mobile-first** social media web app designed for pet lovers! This platform allows users to upload profiles of their pets, swipe through other profiles, and compete for likes to see who ranks as the **"Top Dog"** on the leaderboard.
 
